@@ -1,0 +1,31 @@
+% Comando simples para exibir comandos Latex no texto
+\newcommand{\comando}[1]{\textbf{$\backslash$#1}}
+
+% Poderia usar e citar alguns trechos de \cite{overview-blockchain-underwood2016} e \cite{overview-crosby2016blockchain}
+
+Blockchain é o nome dado à tecnologia subjacente utilizada em diversas plataformas de gerenciamento descentralizado de posse de bens digitais baseadas em livro-razão distribuído (do inglês, \sigla{DLT}{\textit{Distributed Ledger Technology}} )~\cite{kannengiesser2020trade-offs-acmcs}. Esses bens digitais são chamados de criptomoedas, ou tokens~\cite{angelo2020tokens}. O bitcoin, proposto por~\citeonline{overview-bitcoin2008nakamoto} foi o primeiro exemplo de êxito de uma criptomoeda gerada e gerenciada de forma distribuída e sem entidades centralizadoras. Contudo, a geração e gerenciamento de posse de criptomoedas é uma entre diversas aplicações possíveis baseadas na DLT, ou seja, é apenas um fim para um meio~\cite{overview-blockchainbasic2018drescher}.
+
+A plataforma baseada em DLT, Ethereum, proposta por~\citeonline{ethereum2014whitepaper}, possibilitou a execução de contratos inteligentes de forma descentralizada em uma rede ponto-a-ponto (do inglês, \sigla{P2P}{\textit{peer-to-peer}}). Um contrato inteligente consiste em um conjunto de cláusulas e condições, que são definidas entre as partes envolvidas e expressas por meio de uma linguagem de programação. Depois de escrito, o contrato é implantado em uma blockchain e executado de forma autônoma e automática, sem a necessidade de intermediação e coordenação centralizada~\cite{overview-smartcontracts2020zheng}. Com a introdução dos contratos inteligentes, expandiu-se o campo de aplicações da tecnologia blockchain, que passou a abranger aplicações descentralizadas (do inglês, \sigla{DApp}{\textit{Decentralized Applications}}), \sigla{OAD}{Organizações Autônomas Descentralizadas}, tokenização de bens e governança descentralizada~\cite{maesa2020blockchain3.0, monrat2019survey-blockchain-ieee, angelo2020tokens}. Além disso, as DLTs passaram a ser empregadas também para propor soluções e avanços em áreas como educação, cuidados médicos, \sigla{IoT}{\textit{Internet of things}}, indústria e inteligência artificial~\cite{casino2019block-app-survey-elsevier, salah2019review-blockchain-ai}.
+
+Aplicações que executam sobre a plataforma Ethereum, como DApps, OADs e tokens, geralmente envolvem movimentações de grandes quantias de sua criptomoeda nativa, o Ether. Assim, essas aplicações tornaram-se alvos de diversos ataques que causaram transtornos e graves perdas financeiras~\cite{atzei2017survey-attacks-sok, chen2020survey-ethereum-acm}. O primeiro ataque conhecido aconteceu em 2016 contra o The DAO (sigla para \textit{Decentralized
+Autonomous Organization}), um projeto de \textit{crowdfunding} que arrecadou cerca de 150 milhões de dólares. Neste ataque, um contrato malicioso explorou uma falha no código e transferiu cerca de 3,6 milhões de Ether para sua conta, o equivalente a 50 milhões de dólares~\cite{siegel-dao-attack}. 
+
+Grande parte dos ataques deve-se à exploração de vulnerabilidades encontradas nos contratos inteligentes. Os contratos inteligentes são geralmente escritos em Solidity, uma linguagem de programação de alto nível, Turing-completa, e desenvolvida especialmente para escrever contratos inteligentes para a plataforma Ethereum~\cite{varela2021smart-languages-acmcs}. Segundo~\citeonline{atzei2017survey-attacks-sok} parte desses erros são ocasionados pelo desalinhamento que há entre a semântica da linguagem Solidity e a intuição dos desenvolvedores.
+
+\section{Motivação}
+
+Motivado por riscos à segurança das aplicações baseadas em contratos inteligentes, diversas estratégias foram utilizadas no intuito de mitigar os riscos envolvidos, como exposto nos trabalhos de~\citeonline{liu2019survey-ieeeaccess}, ~\citeonline{chen2020survey-ethereum-acm}, ~\citeonline{sayeed2020smart-attacks-ieee} e ~\citeonline{singh2020survey-vulnerabilities-elsevier}. Assim, diversas abordagens e formas de representação foram propostas para aprimorar a segurança dos contratos inteligentes~\cite{liu2019survey-ieeeaccess, singh2020survey-vulnerabilities-elsevier, chen2020survey-ethereum-acm}, tais como: prova de teoremas; execução simbólica; \textit{model-checking}; modelagem formal; máquina de estados finito; modelagem comportamental; raciocínio formal; linguagens de especificação; análise semântica; e verificação em tempo real.
+
+\section{Objetivos gerais e específicos}
+
+Norteado pelos problemas de segurança envolvendo as vulnerabilidades presentes em contratos inteligentes, este trabalho tem como objetivo propor uma abordagem para verificação formal de contratos inteligentes. Os objetivos específicos para se atingir o propósito deste trabalho são:
+\begin{itemize}
+    \item Escolher quais vulnerabilidades serão atacadas;
+    \item Selecionar o tipo de abordagem relacionada à verificação formal que será utilizada;
+    \item Realizar uma análise acerca da viabilidade da abordagem escolhida;
+    \item Definir as estratégias para implementação e experimentação da proposta.
+\end{itemize}
+
+\section{Organização do trabalho}
+
+A organização do trabalho conta com o Capítulo~\ref{cap:fundamentacao}, no qual é apresentado um referencial teórico sobre a tecnologia blockchain, a plataforma Ethereum e os contratos inteligentes.
