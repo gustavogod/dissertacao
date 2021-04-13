@@ -408,6 +408,8 @@ Outros exemplos de aplicações da blockchain na área da saúde são relatados 
 %--------------------------------------------%
 \subsection{Arquitetura em camadas} \label{tex:fund:ethereum:camadas}
 
+% Em \citeonline{fan2020performance} são descrita 5 camadas, com a EVM em uma camada separada de execução
+
 A blockchain Ethereum foi projetada sobre uma série de conceitos, protocolos e procedimentos, que dependem de recursos computacionais e tecnológicos para funcionar. Esse conjunto de elementos compõem a arquitetura da Ethereum. Em seu trabalho, \citeonline{chen2020survey-ethereum-acm} dividem essa arquitetura em quatro camadas: aplicação; dados; consenso; e rede. 
 
 A arquitetura em camadas conta também com elementos presentes no ambiente, relacionados com recursos tecnológicos e infraestrutura, como exposto na Figura~\ref{fig:eth-arquitetura}. Na camada de aplicação estão as contas, que podem ser CPEs ou CCs, os contratos inteligentes, e a MVE, responsável pela execução do \textit{bytecode} gerado na compilação do contrato. A camada de dados consiste nas informações geradas ao longo da execução dos contratos, como transações e \textit{logs} de eventos, e no armazenamento destas, que são acessadas por meio dos blocos. Os mecanismos para validação dos blocos estão incluídos na camada de consenso, no qual um algoritmo de consenso e uma política de incentivos é utilizada para motivar os mineradores a agirem de forma honesta. A camada de rede é a responsável pela comunicação entre os participantes da rede, possibilitando a descoberta de novos nós e a propagação e verificação das informações, essencial para que cada nó possa manter seu histórico de transações atualizado~\cite{chen2020survey-ethereum-acm}.    
