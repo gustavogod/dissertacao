@@ -1,0 +1,8 @@
+%------------------------------------------------------------%
+\subsection{Bitcoin como um sistema de transição de estados} \label{tex:fund:blockchain:transition_system}
+
+Do ponto de vista técnico, um livro-razão para gerenciamento de posses de criptomoedas, como o da Bitcoin, pode ser considerado como um sistema de transição de estados. Este estado consiste no status da posse de todos os bitcoins existentes, e uma mudança de estados acontece sempre que uma solicitação de transferência de posse da moeda é aceita, alterando o status de posse das mesmas. No sistema bancário tradicional, seria como transferir uma quantia de dinheiro de uma conta para outra, alterando o estado destas contas, que passam a ter um novo valor de saldo~\cite{ethereum2014whitepaper}.
+
+O estado da Bitcoin é representado pelo conjunto de todas as saídas de transações não gastas, denominadas como \sigla{UTXO}{\textit{unspent transaction outputs}}, que representam todas as moedas já mineiradas. Para cada UTXO é atribuído o endereço de seu proprietário, isto é, a chave pública criptográfica de um nó. Cada transação é composta por ao menos uma entrada e saída. Cada entrada contém uma referência para uma UTXO existente e a assinatura digital criptográfica de quem detém sua posse. Uma saída possui uma nova UTXO a ser adicionada ao novo estado~\cite{ethereum2014whitepaper}. 
+
+% inserir imagem da bitcoin como sistema de transição de estados e mencioná-la no texto

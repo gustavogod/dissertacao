@@ -1,0 +1,20 @@
+Para atingir seu objetivo, um algoritmo de consenso deve ser projetado baseado em determinados requerimentos que visam garantir a integridade em uma rede blockchain. No trabalho de \citeonline{consenso-xiao-2020} são definidos 4 requerimentos:
+
+\begin{itemize}
+    \item \textbf{Terminação}: Para cada nó honesto, uma nova transação pode ser descartada ou aceita na blockchain, juntamente do conteúdo de um bloco;
+    \item \textbf{Concordância}: Cada nova transação e seu respectivo bloco pode ser aceito ou descartado por todos os nós honestos. Cada nó honesto deve atribuir ao bloco aceito o mesmo número de sequência. Este requerimento controla a disposição na ordem correta dos blocos e transações;
+    \item \textbf{Validade}: Se cada nó recebe o mesmo bloco válido, então este bloco é aceito e inserido na blockchain;
+    \item \textbf{Integridade}: Para cada nó honesto, todas as transações aceitas devem ser consistentes entre si. Cada bloco aceito deve ser gerado e inserido na blockchain em ordem cronológica, ligado ao último bloco da rede por meio de sua referência de \textit{hash}.
+\end{itemize} 
+
+Os requerimentos de terminação e validade representam a propriedade de vivacidade da rede, pois fazem com que todos os nós honestos participem do processo de recebimento e integração de novos blocos, agregando valor ao processo de consenso. A concordância garante que todos os nós tenham acesso à mesma estrutura de dados blockchain. Assim, a sequência de blocos e transações deve ser a mesma para todos os participantes. Por meio do requerimento de integridade se estabelece a exatidão da origem de transações e blocos, visando evitar ataques como o gasto duplo, o que reforça a consistência e segurança da rede~\cite{consenso-xiao-2020, consenso-Bouraga2021}.
+
+Cada protocolo de consenso pode dispor de diferentes mecanismos para cumprir com os requerimentos citados, e a forma de implementar cada um desses varia de acordo com a rede blockchain. Contudo, cinco componentes básicos podem ser destacados, como feito por~\citeonline{consenso-xiao-2020}: 
+
+\begin{itemize}
+    \item \textbf{Proposta do bloco}: Geração dos blocos e incorporação das provas da execução deste processo;
+    \item \textbf{Propagação da informação}: Disseminação dos blocos a transações pela rede;
+    \item \textbf{Validação do bloco}: Checagem dos blocos para produção de provas da geração dos blocos e da validade das transações;
+    \item \textbf{Finalização do bloco}: Atingir um acordo para aceitação dos blocos válidos;
+    \item \textbf{Mecanismo de incentivo}: Atribuir recompensas para os nós honestos participantes e geração de criptomoedas.
+\end{itemize}

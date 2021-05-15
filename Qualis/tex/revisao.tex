@@ -1,0 +1,289 @@
+Este capítulo tem a finalidade de apresentar como a pesquisa foi estruturada. Primeiramente, foram realizadas buscas por trabalhos que abordam a tecnologia blockchain, como estudos secundários e livros. Desta forma, obteve-se um panorama sobre os conceitos gerais envolvidos no funcionamento da blockchain, assim como características específicas que diferenciam blockchains distintas, em particular, a Bitcoin e a Ethereum. Assim, também foi observado em vários trabalhos que aplicações que executam sobre a blockchain Ethereum sofreram diversos ataques, especialmente devido à exploração de vulnerabilidades sobre os CIs, que foram um elemento crucial para a criação da Ethereum, bem como para sua popularização. Com base nisso, foi empregada uma estratégia para revisão bibliográfica conhecida como \sigla{MS}{Mapeamento Sistemático}, empregada neste trabalho com o objetivo de identificar e classificar o conteúdo relacionado à verificação para correção ou detecção de vulnerabilidades para aprimoramento da segurança dos CIs. O MS foi conduzido seguindo os métodos descritos por ~\citeonline{nakagawa2017revisao} e ~\citeonline{kitchenham2007guidelines}. Para descrever como foi conduzido o processo de pesquisa, tal como os métodos empregados, foram seguidas as seguintes tarefas:
+
+\begin{enumerate}
+    \item Planejamento e execução do MS;
+    \item Seleção do método de verificação e detecção de vulnerabilidades adequado para a proposta;
+    \item Seleção das vulnerabilidades abordadas por meio da proposta;
+    \item Definição da estratégia para validação da proposta.
+\end{enumerate}
+
+
+\section{Mapeamento Sistemático} \label{tex:rev:ms}
+
+%A etapa de MS tem o intuito de explorar a literatura sobre o tema verificação formal para correção ou detecção de vulnerabilidades para garantia de segurança de CIs.
+O processo de MS empregado neste trabalho é realizado em três fases: (i) planejamento; (ii) condução; e (iii) publicação dos resultados. O planejamento do MS é a fase na qual é definido o objetivo e o protocolo do MS. No protocolo são especificados os procedimentos necessários para identificação dos estudos primários, tais como: questões de pesquisa; estratégia de busca; fontes de pesquisa; \textit{string} de busca; e critérios de seleção. A fase de condução consiste em identificar os estudos primários com base nas estratégias de busca e seleção, além de extrair e sintetizar os dados de forma a auxiliar o processo de resposta das questões de pesquisa. Por fim, na fase de publicação dos resultados, as questões de pesquisa são respondidas e os resultados são relatados e avaliados~\cite{nakagawa2017revisao, kitchenham2007guidelines}.  
+
+Adiante, na Seção~\ref{tex:rev:ms:planejamento-cond}, são descritas as fases de planejamento e condução do MS, nas quais os itens relacionados ao protocolo do MS são retratados, os estudos primários são identificados e submetidos à extração de seus dados, e a estratégia de sintetização dos dados é definida. Em seguida, na Seção~\ref{tex:rev:ms:publicacao}, os resultados são obtidos e as questões de pesquisa respondidas. Por fim, na Seção~\ref{tex:rev:ms:discussao} há uma discussão acerta dos resultados obtidos.   
+
+\subsection{Planejamento e condução}\label{tex:rev:ms:planejamento-cond}
+
+O MS realizado neste trabalho tem o objetivo de revisar o estado da arte dos estudos realizados que abordam a verificação para correção ou detecção de vulnerabilidades para aprimoramento da segurança dos CIs, assim como classificar as abordagens empregadas e suas formas de implementação, identificar limitações existentes, e, por fim, analisar as estratégias de validação utilizadas.
+
+Com o intuito de guiar o processo de revisão e satisfazer os objetivos, foram formuladas as questões de pesquisa. O foco das questões de pesquisas estão em identificar as abordagens utilizadas, assim como suas limitações e seus respectivos procedimentos de validação. Ademais, também deve-se identificar quais ferramentas e frameworks foram desenvolvidos ou utilizados para aplicação das propostas. Deste modo, baseado no objetivo deste MP, foram levantadas cinco questões de pesquisa (QP). São elas:
+
+\begin{itemize}
+    \item \textbf{QP 1.} Quais abordagens têm sido propostas?
+    %\item \textbf{QP 2.} Quais ferramentas e frameworks foram desenvolvidos ou utilizados para aplicação das abordagens de verificação para correção ou detecção de vulnerabilidades para aprimoramento da segurança dos CIs?
+    \item \textbf{QP 2.} Quando e onde os estudos têm sido aplicados?
+    \item \textbf{QP 3.} Quais problemas ou vulnerabilidades relacionados aos CIs têm sido abordados?
+    \item \textbf{QP 4.} Quais estratégias de validação foram utilizadas?
+    \item \textbf{QP 5.} Quais são as limitações presentes nas abordagens?
+\end{itemize}
+
+Para levantamento dos estudos necessários para responder as questões de pesquisa, foram utilizados os motores de busca \textit{Engineering Village}~\footnote{\url{https://www.engineeringvillage.com/}}, \textit{Scopus}~\footnote{\url{https://www.scopus.com/}} e \textit{Web of Science}~\footnote{\url{https://www.webofknowledge.com}}. Como complemento, a pesquisa também foi realizada sobre as bases de dados bibliográficas \textit{IEEE Xplore}~\footnote{\url{https://ieeexplore.ieee.org/}} e \textit{ACM Digital Library}~\footnote{\url{https://dl.acm.org/}}. Todos os motores de busca e bases bibliográficas selecionados permitem especificar os campos sobre os quais a busca é executada. Neste MS, os repositórios foram configurados para efetuar a busca sobre o título, o resumo e as palavras-chave dos estudos. Além disso, no motor de busca \textit{Web of Science}, os resultados foram refinados para abranger apenas as categorias relacionadas à ciência da computação.
+
+Com os repositórios de artigos definidos, o passo seguinte foi determinar a \textit{string} de busca, composta por palavras-chave e operadores lógicos para conduzir o processo de busca nos repositórios. Como exposto por ~\citeonline{nakagawa2017revisao}, o MS é um processo iterativo, pois, ao longo de seu desenvolvimento, pode-se notar a necessidade de ajustes no objetivo e no protocolo, que são então modificados, o protocolo é reavaliado, e o processo de condução recomeçado. Ao longo desta pesquisa, foram necessários alguns ajustes na \textit{string} de busca, a fim de adequar as palavras-chave escolhidas para abranger mais artigos relacionados com o objetivo deste MS. Por fim, obteve-se a seguinte \textit{string} de busca:
+
+\begin{center}
+    (\textit{``smart contract'' OR ``ethereum bytecode''}) \textit{AND} (\textit{verification OR validation OR monitor* OR analysis OR formalization OR ``formal methods'' OR ``security vulnerabilities'' OR ``security bugs'' OR ``vulnerability detection'' OR ``bug detection'' OR optimiz*})
+\end{center}
+
+\input{tabelas/revisao-repositorios}
+
+Uma vez definida a \textit{string} de busca, as buscas nos repositórios foram realizadas. Considerando a eliminação de artigos duplicados, a quantidade de estudos encontrados em cada repositório é apresentada na Tabela~\ref{tab:rev:repositorios}. O levantamento dos trabalho ocorreu semanalmente, assim, o mecanismo de busca das bases bibliográficas e dos motores de busca foram configurados para enviarem atualizações semanais.
+
+Após o levantamento dos artigos, foram aplicadas duas fases de revisão para selecionar apenas os trabalhos relevantes para esta pesquisa. Na primeira fase, a revisão inicial, o resumo de cada artigo foi lido, e, quando necessário, a introdução e a conclusão também, e então cada trabalho foi incluído ou excluído da revisão de acordo com critérios de seleção predefinidos. Em caso de dúvida, o estudo foi aceito na revisão inicial para novamente analisado na fase seguinte. Assim, obteve-se o conjunto provisório de estudos primários aceitos, sobre o qual foi realizada a fase de revisão final. Nesta fase cada artigo teve todo seu texto lido, e então foi novamente submetido aos critérios de seleção. O processo de planejamento e condução deste MS é ilustrado na Figura~\ref{fig:ms_fluxo}.
+
+\begin{figure}[!ht]
+ \caption{Fluxo de atividades das fases de planejamento e condução do MS}
+ \label{fig:ms_fluxo}
+ \centering
+ \includegraphics[scale=0.5]{figuras/ms_fluxo.png}
+ \fautor
+\end{figure}
+
+Para selecionar os estudos relacionados ao tópico de pesquisa deste MP, foi definido o seguinte critério de inclusão (CrI):
+
+\begin{itemize}
+    \item \textbf{CrI 1.} O estudo propõe uma abordagem que é utilizada para verificação formal para correção ou detecção de vulnerabilidades para garantia de segurança de CIs?
+\end{itemize}
+
+Os estudos excluídos foram rejeitados de acordo com sua adequação à pelo menos um dos seguintes critérios de exclusão (CE): 
+
+\begin{itemize}
+    \item \textbf{CE 1.} O estudo não propõe uma abordagem que é utilizada para verificação formal para correção ou detecção de vulnerabilidades para garantia de segurança de CIs?
+    \item \textbf{CE 2.} O estudo não possui o texto completo publicado?
+    \item \textbf{CE 3.} O estudo não é escrito na língua inglesa?
+    \item \textbf{CE 4.} O estudo é uma versão antiga de outro artigo selecionado?
+    \item \textbf{CE 5.} O estudo não é um estudo primário?
+    \item \textbf{CE 6.} Não foi possível acessar o texto completo do estudo?
+\end{itemize}
+
+Depois da eliminação dos estudos duplicados e da execução das fases de seleção inicial e final, obteve-se os estudos primários necessários para responder às questões de pesquisa. A quantidade de estudos aceitos e rejeitados de cada repositório é exposta na Tabela~\ref{tab:rev:selecao-final}, somando um total de 104 estudos selecionados. Na Tabela~\ref{tab:rev:estudos-selecionados} é listada a citação e o identificador ($#ID$) de cada estudo selecionado. No decorrer deste capítulo, os identificadores são utilizados para se referir à publicação correspondente. 
+
+\input{tabelas/revisao-final-repositorios}
+
+\input{tabelas/estudos_selecionados}
+
+A partir do conjunto final de estudos primários aceitos, foi feita a extração de dados desses trabalhos, na qual informações foram coletadas com o intuito de auxiliar na resposta das questões de pesquisa.
+
+Para condução um MS, é preciso determinar um esquema de classificação para guiar a extração e sintetização dos dados~\cite{petersen2008systematic}. Para as questões de pesquisa \textit{QP 1}, \textbf{QP 3} e \textbf{QP 4} a estratégia de classificação foi definida levando em consideração informações coletadas dos próprios estudos selecionados. A \textbf{QP2} não necessita de classificação, já que trata apenas de informações como o ano e o veículo de publicação dos estudos. Para a \textbf{QP 4} alguns aspectos dos estudos foram analisados, mas nem todos possuem uma classificação direta, já que alguns dados foram coletados de forma não estruturada e sem uma classificação predefinida. As categorias e classificações definidas são expostas a seguir. 
+
+\subsubsection*{Abordagens propostas (\textbf{QP 1})}
+
+Diversas técnicas foram propostas para verificação e correção de CIs com o intuito de mitigar problemas de segurança e a exposição a ataques que visam a exploração de vulnerabilidades no códigos dos contratos para obtenção de benefícios. A partir dos estudos selecionados, foram consideradas dez categorias. São elas: Análise estática; análise dinâmica; análise simbólica; execução simbólica; demonstração de teoremas; \textit{model checking}; verificação dedutiva; \textit{fuzzing}; \sigla{IA}{inteligência artificial}; e outras. 
+
+Nos trabalho selecionados, observou-se quatro variações das abordagens baseadas em \textit{model checking}, como o \textit{model checking} tradicional, o simbólico, o limitado, e o estatístico. Entre as abordagens que utilizam IA, duas técnicas específicas são utilizadas: \textit{machine learning}; e \textit{deep learning}. As variações das abordagens de \textit{model checking} e IA são consideradas como sub-categorias e são tratadas separadamente nos resultados da \textit{QP 1}. Já as técnicas observadas em apenas um dos estudos selecionados são englobadas na categoria \textit{outras}.
+
+As abordagens também são classificadas de acordo com o tipo de verificação, sendo que, neste MS, foram identificados três tipos: proativa; correta por construção (do inglês, \sigla{CBC}{correct-by-construction}); e em tempo de execução.
+
+\subsubsection*{Problemas e vulnerabilidades abordados (\textbf{QP 3})}
+
+Os estudos realizados para verificação de CIs têm como foco diversas vulnerabilidades e problemas para serem verificados. Além da detecção de vulnerabilidades especificas, várias abordagens permitem a detecção de violação de propriedades específicas para cada contrato, que podem ser propriedades funcionais, lógicas, ou baseadas nos requerimentos e requisitos de cada CI. Neste MS, a violação de propriedades é definida com uma categoria de problemas ou vulnerabilidades abordadas. Ademais, algumas abordagens têm foco na correção sintática e semântica dos CIs, o que define mais uma categoria a ser analisada. As vulnerabilidades de segurança tratadas pelos estudos são classificadas em 23 tipos. Na Tabela~\ref{tab:rq3-vulnerabilidades} são listadas todas as vulnerabilidades e problemas considerados para responder esta questão de pesquisa, cada um acompanhado da respectiva sigla.
+
+\subsubsection*{Estratégias de validação (\textbf{QP 4})}
+
+De forma geral, nas pesquisas desenvolvidas para verificação de CIs, alguma ferramenta ou framework é implementado para validação do método proposto, ou é utilizado algum já existente. Em alguns casos, o método proposto não é implementado, e sua aplicação é descrita apenas como um processo. Em todos os casos, alguma estratégia é utilizada para validação da proposta. Baseado nos estudos selecionados, os mecanismos de aplicação das propostas (\textit{M}) são definidos conforme segue:
+\begin{itemize}
+    \item \textit{M1.} Implementação de um framework ou ferramenta;
+    \item \textit{M2.} Utilização de um framework ou ferramenta já existente;
+    \item \textit{M3}. Descrição de um processo.
+\end{itemize}
+
+A estratégia de validação das propostas são classificadas em três categorias, definidas com base nos estudos selecionados. São elas:
+\begin{itemize}
+    \item \textbf{Experimento:} A avaliação da proposta é feita a partir da definição de métricas como acurácia, eficiência, custo, performance, entre outras. O processo de experimentação dos métodos de verificação de CIs englobam ao menos um dos seguintes procedimentos: (i) experimento em larga escala, no qual é obtida uma amostra grande, geralmente com milhares de CIs com vulnerabilidades previamente conhecidas ou não; (ii) experimento reduzido, em que é utilizada uma amostra relativamente pequena de CIs, que pode variar de algumas unidades até centenas de contratos, geralmente com vulnerabilidades previamente conhecidas. Em alguns casos, essa amostra de contratos é obtida a partir de critérios predefinidos, formando um \textit{benchmark} de CIs; (iii) avaliação empírica, na qual uma ou mais ferramentas, frameworks ou técnicas conhecidas na literatura são utilizados no experimento para comparação dos resultados e comprovação de avanços e melhorias;
+    \item \textbf{Estudo de caso:} Como prova de conceito, um ou mais CIs previamente conhecidos são analisados e verificados por meio do método proposto. Na sequência, os resultados são examinados, e a aplicabilidade da proposta é esclarecida;  
+    \item \textbf{Exemplo de aplicação:} Como prova de conceito, são descritos um ou mais exemplos simples de utilização da proposta.  
+\end{itemize}
+
+\subsubsection*{\textbf{Limitações (QP 5)}}
+
+A verificação e detecção de vulnerabilidades em CIs é uma área de pesquisa recente, e, como relatado por ~\citeonline{chen2020survey-ethereum-acm} e ~\citeonline{kim2020automated-test-sc}, as abordagens existentes apresentam diversas limitações. Para responder esta questão de pesquisa, dois aspectos foram considerados para classificação sistemática dos estudos. São eles:
+
+\begin{itemize}
+    \item \textbf{Abrangência limitada}: A verificação não abrange todos os elementos dos CIs, mas apenas algum sub-conjunto da linguagem Solidity;
+    \item \textbf{Nível de automação}: Mesmo que a estratégia proposta execute a verificação de forma automática, alguns trabalhos manuais podem ser necessários, como tradução de código, obtenção do modelo do contrato, especificação de propriedades, e a análise e interpretação dos resultados.
+\end{itemize}
+
+Outros dois aspectos que foram aspectos observados, mas que não são classificados de forma sistemática, são:
+
+\begin{itemize}
+    \item \textbf{Necessidade de conhecimento prévio}: Para aplicação da abordagem é necessário ter o domínio de alguma linguagem ou formalismo específico para modelagem do contrato ou para definição dos padrões de vulnerabilidades e propriedades a serem verificadas;
+    \item \textbf{Acurácia}: A ferramenta ou framework proposto para detecção de vulnerabilidades de CIs retornar falsos positivos e falsos negativos entre seus resultados.
+\end{itemize}
+
+Dentre os aspectos analisados para definir as limitações das abordagens de verificação, os dados sobre a abrangência limitada e o nível de automação foram coletados de forma estruturada sobre todos os estudos. Para as demais limitações, não foi estabelecida uma classificação predefinida, pois estas podem variar de acordo com a abordagem empregada e não seguem um padrão que permita uma classificação sistemática dos estudos.
+
+\input{tabelas/rq3-vulnerabilidades}
+
+%-------------------------------------------------------%
+\subsection{Resultados}\label{tex:rev:ms:publicacao}
+
+O MS foi executado de acordo com os passos descritos na Seção~\ref{tex:rev:ms:planejamento-cond}. Nesta seção são apresentados os resultados para cada questão de pesquisa. Para isso, foi utilizado um formulário de extração de dados com o ID do estudo, dados bibliográficos e informações referentes às classificações utilizadas. Tais dados e informações foram utilizados para extrair as respostas das questões de pesquisa, e, posteriormente, para exibição dos resultados.
+
+\subsubsection*{\textbf{Abordagens para verificação de CIs (QP. 1)}}
+
+% execução simbólica é um tipo de abordagem dinâmica, mas foi tratada separadamente devido ao número expressivo de trabalhos encontrado que usam essa técnica específica e também por conta de sua peculiaridade de utilizar SMT solvers para verificação
+
+Em 93 dos trabalhos selecionados é utilizada apenas uma das abordagens categorizadas nesta questão de pesquisa, com exceção de 11 trabalhos, que utilizam abordagens híbridas, nas quais duas técnicas são utilizadas em conjunto. Com o intuito de expor as principais abordagens mais utilizadas para verificação para correção e aprimoramento da segurança de CIs, no gráfico da Figura~\ref{fig:rq1-abordagens} é apontado o número de estudos em que cada abordagem foi empregada dentre 104 selecionados, na qual pode-se observar uma prevalência das técnicas de execução simbólica, \textit{model checking} e análise estática. Na tabela~\ref{tab:rq1-hibridas} são mostrados os estudos que empregaram abordagens híbridas.
+
+\begin{figure}[!htb]
+ \caption{Abordagens para verificação de CIs utilizadas}
+ \label{fig:rq1-abordagens}
+ \centering
+ \includegraphics[scale=0.6]{figuras/rq1-abordagens.png}
+ \fdadospesquisa
+\end{figure}
+
+\input{tabelas/rq1-abordagens-hibridas}
+
+Entre as abordagens baseadas em \textit{model checking} observou-se quatro variações da aplicação desta técnica, consideradas como sub-categorias desta questão de pesquisa. Da mesma forma, também foram identificadas duas sub-categorias entre as abordagens de IA. Os estudos que utilizam \textit{model checking} são expostos na Tabela~\ref{tab:rq1-model-check}. Das abordagens baseadas em IA, em \#08,\#14, \#20, \#54, \#84 e \#90 são aplicadas técnicas de \textit{machine learning}, enquanto que em \#16 e \#96 é utilizado \textit{deep learning}. Dos estudos englobados na categoria \textit{outras}, foram aplicadas as seguintes técnicas de verificação: execução concólica (\#12); refinamento de abstração (\#67); pesquisa genética e teste de mutação (\#83); e interpretação abstrata (\#95).
+
+Quanto ao tipo de verificação houve pouca variação, com 92\% (96 de 104) dos estudos propondo uma estratégia de verificação proativa. Entre os outros tipos, nos estudos \#1, \#95, \#101 e \#103 (4\% dos estudos) é utilizado o método CBC, sendo que em \#101 também pode-se optar por uma verificação proativa por meio de \textit{model checking}. A verificação em tempo de execução também é pouco explorada, e está presente apenas em \#19, \#30, \#61 e \#77 (4\%). 
+
+
+\input{tabelas/rq1-model-checking}
+%depois vê se vai considerar uma categoria geral de verificação formal para englobar model checking e verificação dedutiva.
+
+\subsubsection*{\textbf{Classificação das publicações por ano e veículo de publicação (QP. 2)}}
+
+Com o propósito de oferecer uma visão geral dos esforços empregados para verificação de CIs, na Figura~\ref{fig:rq2-distribuicao-estudos} é exibido a distribuição dos 104 estudos ao longo dos anos. Como pode-se observar, os esforços para verificação de CIs são recentes, iniciando em 2016 e crescendo rapidamente, principalmente a partir de 2018. Ademais, como complemento à \textbf{QP. 1}, no gráfico da Figura~\ref{fig:rq2-distribuicao-abordagens} é exposto a distribuição da utilização das abordagens para verificação de CIs em cada ano, e na Tabela~\ref{tab:rq2-distribuicao-abordagens} essa distribuição é exibida com a identificação dos estudos. Deste modo, observa-se que análise estática, \textit{model checking} e análise simbólica, além de serem as abordagem mais utilizadas, são as que mais prevaleceram ao longo dos últimos anos. 
+
+\begin{figure}[!htb]
+ \caption{Distribuição dos estudos estudos selecionados ao longo dos anos}
+ \label{fig:rq2-distribuicao-estudos}
+ \centering
+ \includegraphics[scale=0.6]{figuras/rq2-distribuicao-estudos.png}
+ \fdadospesquisa
+\end{figure}
+
+\begin{figure}[!htb]
+ \caption{Distribuição das abordagens para verificação de CIs empregadas ao longo dos anos}
+ \label{fig:rq2-distribuicao-abordagens}
+ \centering
+ \includegraphics[scale=0.6]{figuras/rq2-distribuicao-abordagens.png}
+ \fdadospesquisa
+\end{figure}
+
+\input{tabelas/rq2-distribuicao-abordagens}
+
+Os estudos selecionados foram publicados em Conferências, Simpósios, Periódicos e Workshops. Conferências têm sido o principal veículo de publicação, abrangendo 57\% (59 de 104 estudos). Em seguida, os estudos publicados em Periódicos representam 22\% (23 de 104), enquanto as publicações em Simpósios englobam 16\% (17 de 104). Por fim, apenas 5 estudos foram apresentados em Workshops (5\%). Constata-se que, apesar da maioria dos estudos terem sido publicados em conferências, não há um meio de publicação padrão para este tipo de pesquisa, assim como os eventos e periódicos de publicação, que também são variados.
+
+%fazer tabela com cada evento/periódico de cada estudo????
+
+\subsubsection*{\textbf{Vulnerabilidades e problemas tratados pelas abordagens de verificação de CIs (QP. 4)}}
+
+%DEPOIS TEM QUE GERAR DE NOVO O GRÁFICO DAS VULNERABILIDADES
+
+Na Figura~\ref{fig:rq3-vulnerabilidades} é exibido um gráfico que ilustra o número de estudos em que cada vulnerabilidade e problema é tratado. Desta forma, pode-se notar o foco dos esforços despendidos para verificação de CIs, principalmente para as vulnerabilidades de reentrância $V_{23}$, \textit{integer overflow} e \textit{underflow} $V_{20}$, exceções não tratadas $V_{18}$ e dependência de \textit{timestamp}$V_{14}$, e também para a detecção de violação de propriedades ($VP$). Os estudos em que cada um dos itens são abordados são listados na Tabela~\ref{tab:rq3-estudos-vulnerabilidades}.
+
+\begin{figure}[!htb]
+ \caption{Distribuição das vulnerabilidades e problemas tratados na verificação de CIs}
+ \label{fig:rq3-vulnerabilidades}
+ \centering
+ \includegraphics[scale=0.7]{figuras/rq3-vulnerabilidades.png}
+ \fdadospesquisa
+\end{figure}
+
+\input{tabelas/rq3-estudos-vulnerabilidades}
+
+\subsubsection*{\textbf{Estratégias de validação utilizadas (\textbf{QP 4.})}}
+
+Dos 104 estudos selecionados, em 76 (73\%) o método de verificação proposto é implementado por meio de um framework ou ferramenta (\textit{M1}), e em 22 (21\%) é utilizado um framework ou ferramenta já existente (\textit{M2}). Nos outros 6 estudos (6\%) a verificação é descrita como um processo (\textit{M3}), e, portanto, não é retratado o desenvolvimento ou o uso de algum \textit{software} para guiar ou automatizar o procedimento de verificação. Conforme ilustrado no gráfico da Figura~\ref{fig:rq4-aplicacao-propostas} a utilização de um dos mecanismos de aplicação das propostas pode variar de acordo a abordagem de verificação. Na maior parte das abordagens de verificação baseadas em \textit{fuzzing} (8 dos 9 estudos), demonstração de teoremas (2 dos 3), execução simbólica (18 dos 19) e análise estática (25 dos 26), foram implementados frameworks ou ferramentas de verificação. A utilização de frameworks ou ferramentas já existentes prevaleceu principalmente nas categorias de verificação dedutiva e \textit{model checking} (5 dos 8, e 14 dos 25 estudos, respectivamente). A aplicação da verificação como descrição de um processo ocorreu apenas em uma das propostas de \textit{model checking} e \textit{fuzzing}, e também em 5 das 8 propostas baseadas em IA. Por fim, nas categorias de análise simbólica, análise dinâmica e em outras, todos os estudos empregam o mecanismo \textit{M1}.   
+
+\begin{figure}[!htb]
+ \caption{Utilização dos mecanismos de aplicação das propostas em cada abordagem de verificação}
+ \label{fig:rq4-aplicacao-propostas}
+ \centering
+ \includegraphics[scale=0.7]{figuras/rq4-aplicacao-propostas.png}
+ \fdadospesquisa
+\end{figure}
+
+Entre as estratégias de validação das propostas, em 63\% dos estudos foi aplicado algum experimento, enquanto que o estudo de caso e o exemplo de aplicação foram utilizados como prova de conceito em 25\% e 14\% dos estudos, respectivamente. Na Figura~\ref{} é mostrada a frequência em as estratégias de validação são empregadas sobre cada uma das abordagens de verificação. Assim, nota-se uma quantidade relativamente baixa de experimentos nas propostas de verificação dedutiva e \textit{model checking}, assim como na demonstração de teoremas, em que nenhum experimento foi executado.
+
+\begin{figure}[!htb]
+ \caption{Utilização das estratégias de validação em cada abordagem de verificação}
+ \label{fig:rq4-validacao-propostas}
+ \centering
+ \includegraphics[scale=0.65]{figuras/rq4-validacao-propostas.png}
+ \fdadospesquisa
+\end{figure}
+
+No total, 65 dos 104 estudos realizaram algum experimento para validação das propostas, e, dentre esses, um ou mais procedimentos foram aplicados ao longo do processo de experimentação. Dos 65 estudos, em 47 (72\%) é aplicado um experimento em larga escala, enquanto que em 38 (37\%) é realizado um experimento reduzido e em 28 (43\%) é acrescentado algum procedimento para avaliação empírica. A relação do número de estudos nos quais foram descritos ao menos um dos procedimentos experimentais citados é ilustrada no diagrama de Venn Figura~\ref{fig:rq4-diagrama-experimento}. Vale salientar que, os números 14 e 18, que estão fora das intersecções, representam o número de estudos nos quais foi aplicado apenas o procedimento de experimento reduzido ou em larga escala, nesta ordem.
+
+\begin{figure}[!htb]
+ \caption{Procedimentos aplicados sobre os estudos que realizaram validação experimental}
+ \label{fig:rq4-diagrama-experimento}
+ \centering
+ \includegraphics[scale=0.7]{figuras/rq4-diagrama-experimento.png}
+ \fdadospesquisa
+\end{figure}
+
+% inserir tabelas com a identificação dos estudos de cada gráfico????
+
+\subsubsection*{Limitações presentes nas abordagens (\textbf{QP 5.})}
+
+%falar das limitações dos tipo em tempo de execução e CBC
+
+Em relação à abrangência da verificação de CIs, em 70\% (73 de 104) dos estudos o método empregado engloba todos elementos da linguagem Solidity, ou outra linguagem para programação de CIs considerada, enquanto no restante (31 de 104) é considerada apenas algum subconjunto de elementos da linguagem. Quanto ao nível de automatização, em 66\% (69 de 104) dos estudos é proposta uma estratégia automática para verificação, enquanto em 9\% (9) a verificação é feita manualmente, ou então não é descrito nenhum mecanismo de automatização. Os outros 26 estudos (26\%) empregam estratégias semi-automatizadas, das quais é necessário execução manual de ao menos um dos seguintes procedimentos: (i) tradução de código (9); obtenção do modelo a ser verificado (16); especificação das propriedades (22); e análise e interpretação dos resultados (9). Informações sobre a abrangência e o nível de automação de cada abordagem de verificação são expostas nas Figuras~\ref{fig:rq5-abrangencia} e ~\ref{fig:rq5-automacao}, respectivamente, e os estudos incluídos em cada uma das classificações são listados nas Tabelas~\ref{tab:rq5-limitacoes} e~\ref{tab:rq5-procedimentos-manuais}. 
+
+\begin{figure}[!htb]
+ \caption{Abrangência das abordagem para verificação de CIs}
+ \label{fig:rq5-abrangencia}
+ \centering
+ \includegraphics[scale=0.6]{figuras/rq5-abrangencia.png}
+ \fdadospesquisa
+\end{figure}
+
+\begin{figure}[!htb]
+ \caption{Nível de automação das abordagem para verificação de CIs}
+ \label{fig:rq5-automacao}
+ \centering
+ \includegraphics[scale=0.6]{figuras/rq5-automacao.png}
+ \fdadospesquisa
+\end{figure}
+
+\input{tabelas/rq5-limitacoes}
+
+\input{tabelas/rq5-procedimentos-manuais}
+
+Das abordagens de verificação, as únicas nas quais a maioria dos trabalhos não abrange todos os elementos dos CIs foram o \textit{model checking} (17 entre 23 estudos), a verificação dedutiva (6 entre 8) e a demonstração de teoremas (2 entre 3). Já na análise estática, análise dinâmica, execução simbólica, e em Outras, na vasta maioria dos estudos todos os aspectos dos CIs são aceitos para verificação, enquanto que na análise simbólica, \textit{fuzzing}, e IA isso se enquadra à todos os trabalhos selecionados. 
+
+Quanto ao nível de automação, nota-se que há poucos (ou nenhum) trabalhos semi ou não automatizados entre as abordagens de análise estática, análise dinâmica, análise simbólica, \textit{fuzzing}, e em Outras. Dentre os estudos focados em IA, 3 das 8 propostas foram classificadas como não automatizadas, pois não foram fornecidas informações suficientes para concluir que a verificação é feita de forma automática. Entre as propostas de demonstração de teoremas, \textit{model checking} e verificação dedutiva, todas, ou a maioria não são automatizadas.
+
+Com exceção da demonstração de teoremas, do \textit{model checking} e da verificação dedutiva, foi observado a ocorrência de falsos positivos e falsos negativos entre as vulnerabilidades detectadas pelas ferramentas e frameworks implementados, principalmente quando utilizadas técnicas de análise estática e execução simbólica. De forma indireta, este problema atingiu também os estudos baseados em IA, já que, em alguns destes (#20, #54 e #90), os modelos utilizados para treinamento dos algoritmos de detecção são criados a partir dos resultados obtidos de ferramentas que apresentam altas taxas de falsos positivos e falsos negativos, o que pode ter influenciado a qualidade dos modelos. A ocorrência de falsos positivos e falsos negativos foi notada também em técnicas de análise dinâmica, análise simbólica e \textit{fuzzing}.
+
+As abordagens de demonstração de teoremas, \textit{model checking} e verificação dedutiva destacam-se pela sua precisão, já que não produzem falsos positivos e negativos. Porém, estas baseiam-se na aplicação de métodos formais, e exigem algum conhecimento específico sobre técnicas de modelagem e verificação de propriedades, que geralmente não são dominadas por desenvolvedores.  
+
+\subsection{Discussão} \label{tex:rev:ms:discussao}
+
+Plataformas blockchain baseadas na execução de CIs, como a Ethereum, têm ganhado notável destaque e popularidade nos últimos anos, o que chamou a atenção de diversas áreas interessadas em desfrutar dos benefícios das DApps. Por outro lado, houve também ataques sobre diversos CIs nos quais usuários maliciosos de aproveitaram de vulnerabilidades de segurança presentes nos códigos dos CIs para transferir para a própria conta o Ether associado ao contrato. Estes ataques mobilizaram a academia e a indústria, e, nos últimos ano houve um aumento expressivo das pesquisas que buscam mitigar os riscos destas vulnerabilidades, que iniciaram-se em 2016. Assim, a verificação e detecção de vulnerabilidades em CIs é um tópico de pesquisa recente e diversas abordagens distintas têm sido empregadas. A identificação e classificação dessas abordagens foi o foco desse MS, que também apontou a frequência da utilização dessas abordagens ao longo dos anos, as vulnerabilidades e problemas alvos de verificação, as estratégias de validação empregadas e as principais limitações presentes nestes trabalhos.
+
+Entre os 104 estudos selecionados, as abordagens de verificação mais utilizada, e que também foram as que mais prevaleceram ao longo dos anos foram as baseadas em execução simbólica, \textit{model checking}, e análise estática. Foram classificados neste MS 25 problemas e vulnerabilidades alvos de verificação. Destes, nota-se que a Reentrância ($V_{23}$) foi a vulnerabilidade mais investigada pelos estudos, o que provavelmente deve-se ao fato desta ter sido a primeira a ser explorada, o que resultou no ataque ao contrato \textit{The DAO} e mobilizou a comunidade em torno deste problema. 
+
+Uma forma mais genérica de verificar se a execução de um contrato é realizada conforme esperado é por meio da verificação da violação de propriedades ($VP$), as quais podem estar relacionadas com problemas de segurança, e também com o cumprimento de requisitos de projeto, funcionais, e lógicos. As propriedades são definidas especialmente para cada contrato, um trabalho manual que exige um alto nível de compreensão dos requisitos do contrato, assim como o conhecimento específico do formalismo ou linguagem de especificação utilizado. A violação de propriedades têm sido tratada principalmente pelas abordagens baseadas em \textit{model checking} (em 15 estudos).
+
+Outra questão analisada neste MS foram as estratégias da validação utilizada nos estudos (\textbf{QP 4}). Desta forma pôde-se observar desde estratégias simples e triviais como exemplos de aplicação e estudos de caso, até as mais robustas, compostas por vários procedimentos experimentais. Em muitos casos, a falta de uma validação mais completa e robusta fez que com não fosse possível concluir sobre questões como a eficiência e acurácia dos métodos propostos (como nos estudos \#11, \#15, \#22, \#23, \#27, \#58, \#59, \#60, \#69, \#70, \#71, \#75, \#78, \#82, \#87, \#95, \#98, \#100 e \#103).  
+
+Ao longo dos resultados da \textbf{QP 5}, a abordagens foram classificadas em relação à abrangência da verificação e ao nível de automação da estratégia empregada, o que envolve não apenas a verificação em si, mas também procedimentos aplicados antes e após. Apenas no \textit{model checking}, na demonstração de teoremas, e na verificação dedutiva os estudos foram em maioria aplicados apenas sobre um subconjunto da linguagem de programação de CIs considerada, o que indica necessidade de avanços nessa área para expandir a verificação sobre mais elementos dos CIs e abranger contratos mais complexos e variados. Também, nestas três abordagens, notou-se, na maior parte dos estudos, a aplicação de procedimentos manuais ao longo da estratégia de verificação. Entretanto, o fato de um método não ser totalmente automatizo não representa, necessariamente, uma desvantagem, pois depende do fim para o qual ele é proposto. Por exemplo, em muitos casos pode ser desejável que propriedades sejam definidas manualmente, pois cada contrato possui requisitos específicos relacionados ao seu projeto e seu propósito.
+
+De forma geral, ainda não há uma convergência ou consenso sobre qual método de verificação é o melhor, pois ainda é uma área de estudo recente, e várias abordagens mostram-se promissoras, tantos aquelas utilizadas a mais tempo quantos a mais recentes, como as baseadas em IA. Contudo, ainda há diversas limitações presentes, que servirão de motivação das pesquisas e avanços futuros nesta área.
+
+\section{Seleção dos fundamentos da proposta}
+
+A realização do MS descrito na Seção~\ref{tex:rev:ms} constituiu a primeira das quatro tarefas de pesquisa descritas no início deste Capítulo, e serve de base para a execução das próximas, que são: 2. Seleção do método de verificação e detecção de vulnerabilidades adequado para a proposta; 3. Seleção das vulnerabilidades abordadas por meio da proposta; e 4. Definição da estratégia para validação da proposta.
+
+O método de verificação escolhido foi o \textit{model checking}, pois há diversos trabalhos na literatura que utilizam esta técnica para verificação de vulnerabilidades de reentrância e para detecção de violação de propriedades. Desta forma, pretende-se focar em vulnerabilidades já conhecidas e também permitir a análise de propriedades funcionais de cada contrato individualmente. Além disso, das abordagens mais utilizadas, o \textit{model checking} apresenta a melhor precisão, com a ausência de falsos positivos e falsos negativos.
+
+Das vulnerabilidades e problemas alvos desta pesquisa, além dos dois já citados, também pretende-se focar nas vulnerabilidades de contrato suicida ($V_{8}$), e \textit{Delegatecall injection} ($V_{13}$). Estas duas foram exploradas nos ataques cometidos contra o contrato da \textit{Parity Wallet}, citados na Seção~\ref{tex:fund:ethereum:vuln-ataques}. Enquanto a $V_{8}$ foi abordada em alguns trabalhos que empregam o \textit{model checking}~\cite{frank2020ethbmc-32, nelaturu2020verified-101}, a $V_{13}$ ainda não foi tratada por meio desta técnica, o que seria um avanço no estado da arte. Como estratégia de validação, pretende-se aplicar um experimento reduzido, com contratos cujas vulnerabilidades já são conhecidas, permitindo, assim, garantir o nível de acurácia do método. Além disso, uma avaliação empírica deve ser realizada para maior robustez sobre os resultados obtidos. Demais detalhes sobre o método proposto são descritos adiante no Capítulo~\ref{}.

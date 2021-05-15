@@ -1,0 +1,23 @@
+\begin{table}[!ht]
+\centering
+\fontsize{8pt}{8pt}\selectfont
+\caption{Vulnerabilidades e problemas alvos de verificação em CIs}
+\label{tab:rq3-vulnerabilidades}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Sigla} & \textbf{Vulnerabilidade / Problema} & \textbf{Sigla} & \textbf{Vulnerabilidade / Problema} \\ \midrule
+$V_{1}$  & Ataque de profundidade da pilha de chamadas & $V_{14}$ & Dependência de \textit{timestamp}       \\
+$V_{2}$  & Ataque DoS com operações ilimitadas         & $V_{15}$ & Desordem de exceções           \\
+$V_{3}$  & Autenticação com \textit{tx.origin}                  & $V_{16}$ & Divisão por zero               \\
+$V_{4}$  & Bloqueio de Ether                           & $V_{17}$ & Endereço curto                 \\
+$V_{5}$  & Consumo de \textit{gas} ineficiente                  & $V_{18}$ & Exceções não tratadas          \\
+$V_{6}$  & Contrato guloso                             & $V_{19}$ & Chamada externa não verificada \\
+$V_{7}$  & Contrato pródigo                            & $V_{20}$ & \textit{Integer overflow} e \textit{underflow}   \\
+$V_{8}$  & Contrato suicida                            & $V_{21}$ & Gasto de \textit{gas} descontrolado     \\
+$V_{9}$  & Contrato \textit{honeypot}                           & $V_{22}$ & Problemas de concorrência      \\
+$V_{10}$ & Controle de acesso vulnerável               & $V_{23}$ & Reentrância                    \\
+$V_{11}$ & \textit{Delegatecall injection}             & $VP$  & Violação de propriedades       \\
+$V_{12}$ & Dependência de informação do bloco          & $CSS$ & Correção sintática e semântica \\
+$V_{13}$ & Dependência de ordem da transação           &       &                                \\ \bottomrule
+\end{tabular}
+\end{table}
