@@ -1,0 +1,21 @@
+Os dois tipos de transações possuem os seguintes atributos:
+\begin{itemize}
+    \item \textbf{\textit{nonce}:} Utilizado como um contador, pois indica o número total de transações que já foram iniciadas pelo remetente. Ressalta-se que, este item não possui relação ou função semelhante ao \textit{nonce} utilizado nos cabeçalhos dos blocos da blockchain que implementam o algoritmo de consenso \textit{proof-of-work}, abordado na Seção~\ref{tex:fund:blockchain:consenso};
+    \item \textbf{\textit{gasPrice}:} Um valor em Wei a ser pago para cada unidade de \textit{gas} utilizada na execução da respectiva transação;
+    \item \textbf{\textit{gasLimit}:} O valor máximo em \textit{gas} que o remetente está disposto a pagar como taxa para o minerador que vencer a disputa pela criação do bloco no qual essa transação está inclusa;
+    \item \textbf{Destinatário (\textit{to}):} O endereço do destinatário da mensagem, que pode ser uma CPE ou uma CC;
+    \item \textbf{\textit{value}:} Valor em Wei a ser transferido ao destinatário da mensagem. Em caso de criação de contrato, indica o valor a ser depositado na nova contra criada;
+    \item \textbf{\textit{(v, r, s)}:} Os dados indicam a assinatura do remetente, feita por meio do Algoritmo de Assinatura Digital de Curva Elíptica~\cite{johnson2001elliptic-ethereum}.
+\end{itemize}
+
+Uma transação para criação de um contrato inteligente também possui o seguinte item:
+\begin{itemize}
+    \item \textbf{\textit{init}:} Especifica, por meio de um vetor de \textit{bytes}, o \textit{bytecode} para o procedimento de inicialização da conta. 
+\end{itemize}
+
+O \textit{init} é um fragmento do \textit{bytecode} que é executado apenas na criação da contrato, e então é descartado. Quando executado, retorna o corpo do código da conta, que é um segundo fragmento de código que é executado sempre que a conta recebe uma mensagem, seja por meio de uma transação ou devido a uma execução interna do código~\cite{wood2014ethereum-yellow-paper}. 
+
+Já transações com mensagens para transferência de Ether e execução de contratos possuem o seguinte atributo~\cite{wood2014ethereum-yellow-paper}:
+\begin{itemize}
+    \item \textbf{\textit{data}:} Um vetor de \textit{bytes} com dados de entrada da mensagem. Esses dados podem ser parâmetros de uma função, por exemplo.
+\end{itemize}

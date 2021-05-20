@@ -1,0 +1,15 @@
+\subsection{Função de transição de estados} \label{tex:fund:ethereum:transicao}
+
+Ao se executar de uma função ($F$) de transição de estado $F(S, TX) \rightarrow S'$, a seguinte sequência de passos deve ser realizada:
+\begin{enumerate}
+    \item Checar se a transação contém todos os atributos necessários;
+    \item Checar se a assinatura digital é válida; 
+    \item Checar se o \textit{nonce} da transação e da conta do remetente são iguais. Em caso negativo para algum dos 3 primeiros passos, uma mensagem de erro é retornada;
+    \item Calcular a taxa de execução da transação ($gasLimit * gasPrice$); 
+    \item Identificar o remetente por meio da assinatura digital;
+    \item Subtrair a taxa do saldo da conta e incrementar o \textit{nonce} do remetente. Caso o saldo não seja suficiente, uma mensagem de erro é retornada;
+    \item Definir $gas = startGas$, e retirar a quantidade de \textit{gas} a ser paga pelos \textit{bytes} da transação;
+    \item Transferir a quantidade de Ether especificada na transação da conta do remetente para a conta do destinatário. Se a conta do destinatário não existir, então esta deve ser criada. Se a conta do destinatário for uma CC, executar o código do contrato até que a execução esteja completa, ou até atingir o limite definido em \textit{gasLimit};
+    \item Se a transferência falhar por conta de saldo insuficiente do remetente ou por \textit{gasLimit} atingido, todos os estados alterados são revertidos, exceto o pagamento das taxas dos mineradores, que devem receber o valor em suas contas;
+    \item Se a transferência for bem executada, então o remetente recebe de volta a quantia de \textit{gas} restante, e o minerador recebe a taxas referente ao \textit{gas} consumido.
+\end{enumerate}

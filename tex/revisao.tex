@@ -81,7 +81,7 @@ Para condução um MS, é preciso determinar um esquema de classificação para 
 
 \subsubsection*{Abordagens propostas (\textbf{QP 1})}
 
-Diversas técnicas foram propostas para verificação e correção de CIs com o intuito de mitigar problemas de segurança e a exposição a ataques que visam a exploração de vulnerabilidades no códigos dos contratos para obtenção de benefícios. A partir dos estudos selecionados, foram consideradas dez categorias. São elas: Análise estática; análise dinâmica; análise simbólica; execução simbólica; demonstração de teoremas; \textit{model checking}; verificação dedutiva; \textit{fuzzing}; \sigla{IA}{inteligência artificial}; e outras. 
+Diversas técnicas foram propostas para verificação e correção de CIs com o intuito de mitigar problemas de segurança e a exposição a ataques que visam a exploração de vulnerabilidades no códigos dos contratos para obtenção de benefícios. A partir dos estudos selecionados, foram consideradas dez categorias. São elas: Análise estática; análise dinâmica; análise simbólica; execução simbólica; demonstração de teoremas; \textit{model checking}; verificação dedutiva; \textit{fuzzing}; IA; e outras. 
 
 Nos trabalho selecionados, observou-se quatro variações das abordagens baseadas em \textit{model checking}, como o \textit{model checking} tradicional, o simbólico, o limitado, e o estatístico. Entre as abordagens que utilizam IA, duas técnicas específicas são utilizadas: \textit{machine learning}; e \textit{deep learning}. As variações das abordagens de \textit{model checking} e IA são consideradas como sub-categorias e são tratadas separadamente nos resultados da \textit{QP 1}. Já as técnicas observadas em apenas um dos estudos selecionados são englobadas na categoria \textit{outras}.
 
@@ -280,6 +280,7 @@ Ao longo dos resultados da \textbf{QP 5}, a abordagens foram classificadas em re
 
 De forma geral, ainda não há uma convergência ou consenso sobre qual método de verificação é o melhor, pois ainda é uma área de estudo recente, e várias abordagens mostram-se promissoras, tantos aquelas utilizadas a mais tempo quantos a mais recentes, como as baseadas em IA. Contudo, ainda há diversas limitações presentes, que servirão de motivação das pesquisas e avanços futuros nesta área.
 
+% ferramentas de model checking não funcionam para todos os elementos da linguagem, porém, elas tem o intuito de abordar propriedades específicas. MC é um método custoso, e quando aplicado, não costuma ser para todo o sistema, mas apenas para uma parte mais crítica \cite{peled2019formal-methods}
 \section{Seleção dos fundamentos da proposta}
 
 A realização do MS descrito na Seção~\ref{tex:rev:ms} constituiu a primeira das quatro tarefas de pesquisa descritas no início deste Capítulo, e serve de base para a execução das próximas, que são: 2. Seleção do método de verificação e detecção de vulnerabilidades adequado para a proposta; 3. Seleção das vulnerabilidades abordadas por meio da proposta; e 4. Definição da estratégia para validação da proposta.
