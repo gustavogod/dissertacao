@@ -26,6 +26,11 @@
 \newcommand{\LatL}{0.42\textwidth}
 
 \usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{automata,positioning,arrows.meta}
+\usepackage[graphics,tightpage,active,pdftex]
+%\usepackage{float}
 % ---------------------------------------------------------------------------
 
 
@@ -33,14 +38,14 @@
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 % Tanto na capa quanto nas folhas de rosto apenas a primeira letra da primeira palavra (ou nomes próprios) devem estar em letra maiúscula, todas as demais devem ser em letra minúscula.
-\tituloPT{Verificação formal de contratos inteligentes na Ethereum}
-\tituloEN{Formal verification of Ethereum smart contracts}
+\tituloPT{Verificação formal para detecção de vulnerabilidades em contratos inteligentes}
+\tituloEN{Formal verification for vulnerability detection in smart contracts}
 \autor[Dias, O. D.]{Gustavo Oliveira Dias}
 \genero{M} % Gênero do autor (M = Masculino / F = Feminino)
 \orientador[Orientador]{Prof. Dr.}{Adenilso da Silva Simão}
 %\coorientador{Prof. Dr.}{Fulano de Tal}
 \curso{CCMC}
-\data{04}{03}{2021} % Data do depósito
+\data{25}{05}{2021} % Data do depósito
 \idioma{PT} % Idioma principal do documento (PT = português / EN = inglês)
 % ---
 
@@ -53,16 +58,17 @@
 % conter no máximo 500 palavras
 % conter no mínimo 1 e no máximo 5 palavras-chave
 \textoresumo[brazil]{
-    A tecnologia blockchain, promovida pela criptomoeda Bitcoin, ficou conhecida pela sua capacidade de realizar o gerenciamento de posse descentralizado de criptomoedas por meio de um livro-razão distribuído. Com a introdução da Ethereum, foi possível a implantação de contratos inteligentes, que são programas de computador que expressam cláusulas, condições e acordos estabelecidos entre as partes envolvidas. Uma vez implementados, os contratos inteligentes executam de forma autônoma e descentralizada por meio da Máquina Virtual Ethereum, sem a necessidade de intermediação. Por meio dos contratos inteligentes expandiram-se as áreas de aplicação da blockchain, que passaram a abranger também aplicações descentralizadas, Organizações Autônomas Descentralizadas, governança, finanças, cuidados médicos, entre outras áreas. Solidity é a linguagem de programação desenvolvida para construção de contratos inteligentes para execução na Ethereum. Contudo, vulnerabilidades encontradas no código dos contratos ocasionaram diversas perdas financeiras. Devido à imutabilidade da blockchain, uma vez implantado, o contrato não pode ser alterado, o que aumentou a preocupação com o desenvolvimento de contratos livres de erros. Este trabalho tem como objetivo propor uma abordagem para verificação formal de contratos inteligentes. Para isso, as seguintes etapas devem ser concretizadas: (i) escolher quais vulnerabilidades serão atacadas; (ii) selecionar o tipo de abordagem relacionada à verificação formal que será utilizada; (iii) Realizar uma análise acerca da viabilidade da abordagem escolhida; (iv) definir as estratégias de implementação e experimentação para avaliação da proposta.
-    }{Blockchain, Livro-razão distribuído, Contrato inteligente, Verificação formal, Vulnerabilidades}
+    A tecnologia blockchain, promovida pela criptomoeda Bitcoin, ficou conhecida pela sua capacidade de realizar o gerenciamento de posse descentralizado de criptomoedas por meio de um livro-razão distribuído. Com a introdução da blockchain Ethereum e da linguagem de programação Solidity, foi possível a implantação de contratos inteligentes, que são programas de computador que expressam cláusulas, condições e acordos estabelecidos entre as partes envolvidas. Uma vez implantados, esses contratos executam de forma autônoma, imutável e descentralizada, sem a necessidade de confiar em uma terceira parte reguladora. Desta forma, expandiram-se as aplicações da tecnologia blockchain, que passaram a abranger aplicações descentralizadas, Organizações Autônomas Descentralizadas, governança, finanças, cuidados médicos, entre outras áreas. Em tais aplicações, geralmente há movimentações e gerenciamento de grandes quantias monetárias feitas em Ether, a criptomoeda nativa da Ethereum. Devido a este fator, os contratos inteligentes foram alvos de diversos ataques, que causaram graves perdas financeiras. Nesses ataques, são exploradas vulnerabilidades encontradas no código dos contratos, visto que, em razão da imutabilidade da blockchain, uma vez implantado, um contrato não pode ter seu código atualizado. No primeiro desses ataques, uma aplicação de \textit{crowdfunding} teve todos os seus fundos roubados por um invasor, que transferiu cerca de 150 milhões de dólares em Ether para sua conta, o que despertou a atenção da academia e da indústria para a segurança dos contratos inteligentes. Esta pesquisa tem o objetivo de propor uma estratégia para verificação formal de contratos inteligentes escritos em Solidity para detecção das vulnerabilidades de reentrância, \textit{delegatecall injection} e contrato suicida, por meio da técnica de \textit{model checking}. Para isso, os contratos devem ser convertidos em um modelo formal baseado em estados, e as propriedades de segurança devem ser especificadas, para então dar início ao processo de verificação. Caso alguma das propriedades sejam violadas, será fornecido um contra-exemplo indicando o caminho de execução até a violação, bem como a identificação da vulnerabilidade detectada. Além das vulnerabilidades que são alvos desta pesquisa, também será possível a verificação de propriedades relativas aos requisitos dos contratos. Para evitar trabalhos manuais e a necessidade de conhecimento especializado em métodos formais, a conversão do código deve ser realizada automaticamente, e, para verificação das propriedades, será fornecido um modelo para especificação em linguagem natural. Para validação da proposta, será aplicado um experimento sobre uma amostra de contratos com vulnerabilidades conhecidas para avaliar a eficácia da verificação e coletar dados de desempenho como tempo de execução, consumo de memória e processamento. Além disso, será elaborado ao menos um estudo de caso para verificação de propriedades funcionais relacionadas aos requisitos do contrato. Por meio da proposta exposta neste trabalho, pretende-se contribuir para o aprimoramento da segurança dos contratos inteligentes, assim como prover um meio simplificado para utilização do \textit{model checking}.
+    }{Blockchain, Livro-razão distribuído, Contrato inteligente, Verificação formal, \textit{Model-checking}}
 
+%Diante disso, diversos métodos de verificação têm sido propostos para detecção de vulnerabilidades e aprimoramento de segurança dos CIs. As abordagens para verificação baseadas em análise de código mostraram-se ineficientes para contratos complexos, e apresentam taxas consideráveis de falsos positivos e falsos negativos. As abordagens de verificação formal são mais precisas e realizam uma busca mais completa sobre o contrato, porém, costumam exigir conhecimento especializado para modelagem dos contratos, além de limitações de tempo e memória. Assim, técnicas de verificação formal são aplicados geralmente em sistemas críticos, nos quais falhas podem levar à graves prejuízos, como no caso dos CIs.
 
 % resumo em INGLÊS
 % conter no máximo 500 palavras
 % conter no mínimo 1 e no máximo 5 palavras-chave
 \textoresumo[english]{
-    Blockchain technology, pioneered by Bitcoin cryptocurrency, became known for its ability to perform decentralized ownership management of cryptocurrencies through a Distributed Ledger Technology. By the release of Ethereum, it was possible to implement smart contracts, which are computer programs that express clauses, conditions and agreements established among the involved parties. Once implemented, smart contracts execute in an autonomous and decentralized way through the Ethereum Virtual Machine, without the need for intermediation. Through smart contracts, the application areas of blockchain were expanded, which covers decentralized applications, Autonomous Decentralized Organizations, governance, finance, healthcare, among other areas. Solidity is the programming language developed for building smart contracts for execution at Ethereum. However, vulnerabilities found in the contract code caused several financial losses. Due to blockchain immutability, once deployed the contract cannot be changed, which increases the concern with the development of error-free contracts. This work aims to propose an approach for formal verification of smart contracts. To achieve this, the following steps must be performed: (i) choose which vulnerabilities will be attacked; (ii) select the type of approach related to formal verification that will be used; (iii) carry out a feasibility analysis of the chosen approach; (iv) define the implementation and experimentation strategies for the proposal evaluation. 
-    }{Blockchain, Distributed Ledger Technology, Smart contract, Formal verification, Vulnerabilities}
+    Blockchain technology, pioneered by the Bitcoin cryptocurrency, became known for its ability to perform decentralized cryptocurrency ownership management through a distributed ledger. With the introduction of the Ethereum blockchain and the Solidity programming language, it was possible to deploy smart contracts, computer programs that express clauses, conditions and agreements established among the parties involved. Once deployed, these contracts execute in an autonomous, immutable and decentralized way, without relying on a third regulatory party. Therefore, the applications of blockchain technology were expanded, which became to include decentralized applications, Decentralized Autonomous Organizations, governance, finance, health care, among other areas. In such applications, there are usually financial transactions and management of large amounts of Ether, the native cryptocurrency of Ethereum. Such a factor made smart contracts the target of several attacks, which caused severe financial losses. In these attacks, the attacker exploits vulnerabilities found in the contract code. Due to the immutability of the blockchain, once a contract is implemented, it cannot be updated. In the first of these attacks, an attacker stoles all the funds of a crowdfunding application, who transferred about \$150 million in Ether to his account, which have attracted attention from academia and industry to the security of smart contracts. This research aims to propose a strategy for formal verification of smart contracts written in Solidity to detect vulnerabilities of reentrancy, delegatecall injection and suicide contract, through the technique of model checking. To this aim, the contracts must be converted into a formal state-based model, and security properties have to be specified, then the verification process can begin. If any of the properties are violated, a counter-example will be provided indicating the execution path until the violation and identifying the detected vulnerability. In addition to the vulnerabilities that are the targets of this research, it will also be possible to verify properties related to the requirements of the contracts. In order to avoid manual work and the need for specialized knowledge in formal methods, the conversion of the code must be carried out automatically, and to verify the properties, a model for specification in natural language will be provided. To validate the proposal, an experiment will be applied on a sample of contracts with known vulnerabilities to assess the effectiveness of the verification and collect performance data such as execution time, memory, and processing consumption. In addition, will be prepared at least one case study to verify functional properties related to the contract's requirements. Through the proposal exposed in this work, it is intended to contribute to the improvement of the security of smart contracts and provide a simple way to use model checking. 
+    }{Blockchain, Distributed Ledger, Smart contract, Formal verification, Model checking}
 
 
 % ----------------------------------------------------------
@@ -89,17 +95,16 @@
 \input{tex/fundamentacao}
 
 \chapter{Metodologia e técnicas de pesquisa}
-\input{tex/revisao}
 \label{cap:revisao}
+\input{tex/revisao}
+
 
 %\chapter{Trabalhos relacionados}
 %\label{cap:trab_relacionados}
 
-%\chapter{Método}
-%\label{cap:metodo}
-
-\chapter{Cronograma de atividades}
-\label{cap:cronograma}
+\chapter{Método para verificação formal de contratos inteligentes}
+\label{cap:proposta}
+\input{tex/proposta}
 
 %\chapter{Considerações finais}
 %\label{cap:cons_finais}

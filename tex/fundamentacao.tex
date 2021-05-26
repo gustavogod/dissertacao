@@ -52,9 +52,9 @@ Desta forma, tentar fraudar dados de transação manipulados envolve uma série 
 %Elaborar a figura da construção do bloco baseado na imagem de \cite{consenso-Bouraga2021}
 
 %---------------------------------------------------------------%
-\subsection{Processo de validação na Blockchain} \label{tex:fund:blockchain:consenso}
+\subsection{Processo de validação na blockchain} \label{tex:fund:blockchain:consenso}
 
-Um fator fundamental no êxito da Blockchain foi sua capacidade de garantir integridade e confiança em um ambiente de sistemas ponto a ponto puramente distribuídos, onde há um número ilimitado de nós conectados sem nenhum nível de confiança pré-estabelecidos entre estes~\cite{overview-blockchainbasic2018drescher}. Em uma rede de blocos com informações que podem ser produzidas por qualquer nó conectado, há o risco iminente de inserção de informações falsas e maliciosas. Para garantir a confiança de que os blocos na blockchain são legítimos, é necessário verificar a validade de um novo bloco antes deste ser inserido na rede. Para incentivar os nós a manterem a integridade das transações, são definidos mecanismos de incentivo, assim como formas de punição para os nós que tentam inserir ou validar transações maliciosas. Em uma blockchain, as regras que regem esse protocolo são definidas por um algoritmo de consenso~\cite{overview-consenso2017sankar, consenso-zhang2020analysis, consenso-Bouraga2021}.
+Um fator fundamental no êxito da Blockchain foi sua capacidade de garantir integridade e confiança em um ambiente de sistemas P2P puramente distribuídos, onde há um número ilimitado de nós conectados sem nenhum nível de confiança pré-estabelecidos entre estes~\cite{overview-blockchainbasic2018drescher}. Em uma rede de blocos com informações que podem ser produzidas por qualquer nó conectado, há o risco iminente de inserção de informações falsas e maliciosas. Para garantir a confiança de que os blocos na blockchain são legítimos, é necessário verificar a validade de um novo bloco antes deste ser inserido na rede. Para incentivar os nós a manterem a integridade das transações, são definidos mecanismos de incentivo, assim como formas de punição para os nós que tentam inserir ou validar transações maliciosas. Em uma blockchain, as regras que regem esse protocolo são definidas por um algoritmo de consenso~\cite{overview-consenso2017sankar, consenso-zhang2020analysis, consenso-Bouraga2021}.
 
 %Por meio de um protocolo previamente estabelecido, os nós são responsáveis por chegar a um consenso para validar cada inserção, seguindo a ordem na qual as transações ocorrem. 
 
@@ -389,7 +389,7 @@ Apesar dos danos do \textit{The DAO Attack} terem sido revertidos, isso causou u
 
 Para facilitar o reuso de código, a MVE dispõe do código de operação (do inglês, \textit{opcode}) \texttt{delegatecall}, usado para inserir o \textit{bytecode} de um contrato no \textit{bytecode} de outro contrato, que irá executá-lo por meio de uma chamada. Quando isso ocorre, o contrato que é chamado pode alterar as variáveis de estado do contrato que o invocou. Essa característica torna este último contrato vulnerável à ação de contratos maliciosos que, quando chamados, podem causar alterações para obter benefícios e transferir \textit{tokens} para sua conta~\cite{chen2020survey-ethereum-acm}.
 
-O primeiro ataque a explorar essa vulnerabilidade ocorreu contra a \textit{Parity Multsignature Wallet}, uma carteira multi-assinatura. Para se autorizar uma transação convencional de Ether, o remetente deve assinar a transação com sua chave privada. Na Ethereum, uma carteira multi-assinatura é um CI que requer múltiplas chaves privadas para desbloquear uma carteira e autorizar transferências. Em 2017, uma vulnerabilidade em uma chamada \texttt{delegatecall} foi explorada, e cerca de 31 milhões de dólares em Ether foi subtraído da \textit{Parity Multsignature Wallet}~\cite{chen2020survey-ethereum-acm}.
+O primeiro ataque a explorar essa vulnerabilidade ocorreu contra a \textit{Parity Multsignature Wallet} (ou apenas \textit{Parity Wallet}), uma carteira multi-assinatura. Para se autorizar uma transação convencional de Ether, o remetente deve assinar a transação com sua chave privada. Na Ethereum, uma carteira multi-assinatura é um CI que requer múltiplas chaves privadas para desbloquear uma carteira e autorizar transferências. Em 2017, uma vulnerabilidade em uma chamada \texttt{delegatecall} foi explorada, e cerca de 31 milhões de dólares em Ether foi subtraído da \textit{Parity Multsignature Wallet}~\cite{chen2020survey-ethereum-acm}.
 
 \begin{figure}[!htb]
  \caption{Exemplo simplificado dos contratos da \textit{Parity Multsignature Wallet}}
@@ -430,7 +430,7 @@ As vulnerabilidades discutidas nesta seção são o foco desta pesquisa. Entreta
 
 Grande parte das vulnerabilidades encontradas em CIs escritos em Solidity poderiam ter sido evitadas com a ajuda de análise formal e verificação desses contratos antes de serem implantados na blockchain~\cite{singh2020survey-vulnerabilities-elsevier, chen2020survey-ethereum-acm}. Porém, as linguagens de domínio específico encontradas no estado da arte, como Solidity, não foram desenvolvidas com o intuito de serem verificadas formalmente, fazendo disso uma tarefa desafiadora. Além disso, Solidity não é uma linguagem perfeita para escrever CIs, já que é vulnerável à certos riscos~\footnote{Solidity. \textit{Security Considerations}.\url{https://docs.soliditylang.org/en/v0.8.4/security-considerations.html}}, e suas características, que são diretamente relacionadas com a execução de CIs na Ethereum, muitas vezes não são compreendidas pelos desenvolvedores~\cite{singh2020survey-vulnerabilities-elsevier, atzei2017survey-attacks-sok}. Consequentemente, mesmo desenvolvedores experientes estão sujeitos a deixar vulnerabilidades de segurança e \textit{bugs} em seus códigos. Devido a isso, organizações recorrem à serviços de auditoria de segurança, como os oferecidos pela OpenZeppeling~\footnote{\url{https://openzeppelin.com/}}, Solidified~\footnote{\url{https://solidified.io/}} e SmartDec~\footnote{\url{https://smartcontracts.smartdec.net/}}. Segundo \citeonline{dika2018security}, auditorias são a forma mais efetiva de garantir a segurança dos CIs antes de sua implantação. Entretanto, esses serviços podem ser muito custoso para pequenas organizações e desenvolvedores autônomos, que, por sua vez, têm que recorrer à frameworks e ferramentas de verificação de CIs~\cite{singh2020survey-vulnerabilities-elsevier}.
 
-Essas ferramentas e frameworks realizam dois tipos de verificação: (i) proativa; e (ii) reativa. A verificação proativa é aplicada sobre os CIs antes da sua implantação, enquanto que a reativa tem a função de reagir à potenciais explorações de vulnerabilidades sobre os CIs durante a fase de execução destes, e é referida também como verificação em tempo de execução~\cite{chen2020survey-ethereum-acm}. Os métodos de verificação são aplicados por meio de diversas abordagens, tais como análise de código, métodos formais, \textit{fuzzing}, e com o uso de técnicas de IA, que são discutidas adiante nas Seções~\ref{tex:fund:analise-codigo}, \ref{tex:fund:metodos-formais}, \ref{tex:fund:fuzzing} e~\ref{tex:fund:ia}, respectivamente. Por fim, na Seção~\ref{tex:fund:tempo-de-exec} são levantados alguns aspectos referentes à verificação em tempo de execução.
+Essas ferramentas e frameworks realizam dois tipos de verificação: (i) proativa; e (ii) reativa. A verificação proativa é aplicada sobre os CIs antes da sua implantação, enquanto que a reativa tem a função de reagir à potenciais explorações de vulnerabilidades sobre os CIs durante a fase de execução destes, e é referida também como verificação em tempo de execução~\cite{chen2020survey-ethereum-acm}. Os métodos de verificação são aplicados por meio de diversas abordagens, tais como análise de código, métodos formais, \textit{fuzzing}, e com o uso de técnicas de IA, que são discutidas adiante nas Seções~\ref{tex:fund:analise-codigo}, \ref{tex:fund:metodos-formais}, \ref{tex:fund:fuzzing} e~\ref{tex:fund:ia}, respectivamente. Na Seção~\ref{tex:fund:tempo-de-exec} são levantados alguns aspectos referentes à verificação em tempo de execução. Enfim, como estão diretamente relacionadas com a proposta desta pesquisa, as lógicas temporais são abordadas na Seção~\ref{tex:fund:logicas-temporais}. 
 
 \subsection{Análise de código} \label{tex:fund:analise-codigo}
 
@@ -448,7 +448,7 @@ Métodos formais são uma coleção de técnicas baseadas na matemática e em l�
 
 \subsubsection*{\textbf{\textit{Model checking}}}
 
-\textit{Model checking} é uma técnica usada para verificação de sistemas de transição de estados que consiste em três etapas: (i) modelagem; (ii) especificação; e (iii) verificação. Com o \textit{model checking}, dado um modelo de estados finito de um sistema, é checado se o modelo satisfaz determinadas propriedades. Para isso, os requerimentos do sistema são formalizados e representadas como propriedades do sistema. As propriedades são descritas por meio de algum formalismo lógico, como as lógicas temporais \sigla{LTL}{\textit{linear temporal logic}} e \sigla{CTL}{\textit{computational tree logic}}, por exemplo. Uma vez obtidos o modelo do sistema e as propriedades, é iniciada a verificação, isto é, o processo de \textit{model checking}, geralmente executado automaticamente por alguma ferramenta, chamada de \textit{model checker}, que interpreta o modelo do sistema como um grafo de estados. Por meio de procedimentos que realizam uma pesquisa exaustiva sobre todo o espaço de
+\textit{Model checking} é uma técnica usada para verificação de sistemas de transição de estados que consiste em três etapas: (i) modelagem; (ii) especificação; e (iii) verificação. Com o \textit{model checking}, dado um modelo de estados finito de um sistema, é checado se o modelo satisfaz determinadas propriedades. Para isso, os requerimentos do sistema são formalizados e representadas como propriedades do sistema. As propriedades são descritas por meio de algum formalismo lógico, como por exemplo, as lógicas temporais linear e ramificada, abordadas em detalhes na Seção~\ref{tex:fund:logicas-temporais}. Uma vez obtidos o modelo do sistema e as propriedades, é iniciada a verificação, isto é, o processo de \textit{model checking}, geralmente executado automaticamente por alguma ferramenta, chamada de \textit{model checker}, que interpreta o modelo do sistema como um grafo de estados. Por meio de procedimentos que realizam uma pesquisa exaustiva sobre todo o espaço de
 estados do sistema, é verificado se, de acordo com o modelo, o sistema age da forma esperada e se o modelo é satisfeito pela propriedade. Quando uma propriedade não é aceita, um contra-exemplo é fornecido, como ilustrado na Figura~\ref{fig:model-checking}~\cite{clarke2018model}. Desta forma, todas as possibilidades de interação são verificadas e aquelas que estiverem em inconformidade com as especificações do sistema são detectadas antes da sua implementação~\cite{peled2019formal-methods}.
 
 \begin{figure}[!htb]
@@ -490,6 +490,150 @@ Recentemente, técnicas de IA têm sido utilizadas para verificação e detecç�
 \subsection{Verificação em tempo de execução} \label{tex:fund:tempo-de-exec}
 
 Métodos para verificação em tempo de execução consistem em instrumentalizar o código Solidity para que este tenha um sistema de monitoramento embutido. Desta forma, é possível monitorar os caminhos de execução e reagir à atividades suspeitas que podem levar à violação de propriedades predefinidas~\cite{wang2019contractguard-19, azzopardi2018monitoring-61, li2020securing-77}. Na ferramenta ContracLarva~\cite{azzopardi2018monitoring-61}, as partes envolvidas no projeto do contrato depositam uma quantia em Ether que fica bloqueada até o término da execução do contrato, e, em caso de detecção de violações de alguma propriedade, as partes prejudicadas são indenizadas, enquanto que aquelas que violaram alguma propriedade não recuperam o valor depositado. No estudo de~\citeonline{wang2019contractguard-19}, a ferramenta ContractGuard instrumentaliza o código fonte com um sistema de intrusão baseado em anomalia. Entretanto, a inserção de um mecanismo de monitoramento nos contratos tem como consequência o aumento do custo de execução, isto é, o gasto excessivo de \textit{gas}, o que representa a maior limitação encontrada em tais abordagens.~\cite{wang2019contractguard-19, azzopardi2018monitoring-61}.
+
+\subsection{Lógica temporal} \label{tex:fund:logicas-temporais}
+
+A lógica temporal é um formalismo usado para descrever sequências de transações entre estados em sistemas reativos~\cite{clarke2018model}. Portanto, uma fórmula lógica temporal geralmente é avaliada sobre um sistema de transição que modela uma especificação de um sistema~\cite{clarke2018model}. Na lógica temporal, o modelo é dado pela tupla $\mathcal{M} = (S, \rightarrow, L)$, em que $S$ é o conjunto de estados, $\rightarrow$ (ou $R$) $ \in S \times S$ é a relação de transição e $L \colon S \rightarrow 2^{AP}$ denota a função de rotulação dos estados com as proposições atômicas $AP$ verdadeiras no estado em que se encontram. Um exemplo de sistema de transição é apresentado na Figura~\ref{fig:temporal_grafo}, definido por:
+\begin{itemize}
+	\item $AP = \{p,q,r\}$
+	\item $S = \{s_{0}, s_{1}, s_{2}\}$
+	\item $\rightarrow = \{(s_{0}, s_{1}), (s_{1}, s_{0}), (s_{0}, s_{2}), (s_{1}, s_{2}), (s_{2}, s_{2})\}$
+	\item $L(s_{0}) = \{p,q\}, L(s_{1}) = \{q, r\}, L(s_{2}) = \{r\}$
+\end{itemize}
+
+\begin{figure}[ht]
+\caption{Exemplo de um sistema de transição.}
+\label{fig:temporal_grafo}
+\centering
+\begin{tikzpicture}[>={Stealth[width=6pt,length=9pt]}, accepting/.style={double distance = 2pt, outer sep = 1pt + \pgflinewidth}, shorten >=1pt, auto]
+\draw (158.0pt, -70.0pt)node[state, label=right:$s_{0}$](0){$p,q$};
+\draw (80.0pt, -171.0pt)node[state, label=below:$s_{1}$](1){$q,r$};
+\draw (220.0pt, -171.0pt)node[state, label=right:$s_{2}$](2){$r$};
+\path[->] (2) edge[loop below] node{}(2);
+\path[->] (1) edge node{}(2);
+\path[->] (0) edge node{}(2);
+\path[->] (1) edge[bend left] node{}(0);
+\path[->] (0) edge[bend left] node{}(1);
+\end{tikzpicture}
+\fdireta{huth2004logic}
+\end{figure}
+
+Uma fórmula lógica temporal pode ser verdadeira ou falsa dependendo do modelo no qual é interpretada. O conjunto de estados representam a evolução do sistema ao longo do tempo e as fórmulas são avaliadas em cada estado do sistema. Portanto, a noção estática de verdade é substituída pela noção dinâmica de evolução dos estados do sistema ao longo do tempo~\cite{clarke2018model}. A lógica temporal pode ser dos tipos linear ou ramificada, as quais são discutidas a seguir.
+
+\subsubsection*{\textbf{Lógica temporal linear}}
+
+Na lógica linear (do ingês, \sigla{LTL}{\textit{linear tree logic}}), o tempo é tratado como se cada momento tivesse apenas um único futuro possível, logo, as fórmulas são interpretadas como sequências lineares, ou caminhos. A LTL possui conectivos que se referem ao futuro, e suas fórmulas são interpretadas sobre uma sequência de estados (i.e., o caminho). Um caminho é uma sequência finita não vazia denotada por $\pi = \langle \pi_{0}, \pi_{1}, \ldots, \pi_{n-1} \rangle$, em que os estados $\pi_{0}, \pi_{1}, \ldots, \pi_{n-1} \in S$ e $(\pi_{i}, \pi_{i-1}) \in R$ para todo $0 \leq i < n-1$. O tamanho de um caminho é denotado por $|\pi|=\infty$. Um caminho infinito é denotado por $\pi = \langle \pi_{0}, \pi_{1}, \pi_{3}, \ldots \rangle$ com tamanho $|\pi| = \infty$. Todo caminho que não pode ser estendido é considerado maximal, logo, qualquer caminho infinito é maximal~\cite{muller1999invited}. A sintaxe de uma fórmula LTL é composta de proposições atômicas e gerada conforme segue:
+\begin{equation}
+\varphi ::= \top~|~\bot~|~p~|~\neg \varphi~|~\varphi \vee \varphi~|~\varphi \rightarrow \varphi~|~X\varphi~|~F\varphi~|~G\varphi~|~\varphi U \varphi'
+\end{equation}
+
+Assim como na lógica proposicional, os valores lógicos avaliados como verdadeiro e falso são representados pelos símbolos $\top$ e $\bot$, respectivamente, além dos operadores lógicos $\neg$, $\wedge$, $\vee$ e $\rightarrow$, que também têm o mesmo significado. Já o símbolo $p$ representa um identificador das proposições, e os operadores $X$, $F$, $G$ e $U$, são usados para especificar situações temporais de uma fórmula. A expressão $X\varphi$ (após $\varphi$) indica que a proposição $\varphi$ é verdadeira no próximo estado. Já a expressão $F\varphi$ (afinal, $\varphi$) configura que em algum estado futuro da computação, $\varphi$ é verdadeira, enquanto que $G\varphi$ (sempre $\varphi$) indica que $\varphi$ é verdadeira em todos os estados do caminho de computação. Enfim, a expressão $\varphi U \varphi'$ ($\varphi$ até que $\varphi'$) significa que a proposição $\varphi$ deve ser verdadeira em todos os estados até que $\varphi$ seja verdadeira~\cite{mura2016, muller1999invited}. 
+
+Uma fórmula $\alpha$ em LTL é satisfeita se existe um modelo $\mathcal{M}$ e um caminho $\pi$ tal que $\mathcal{M}, \pi \models \varphi$, ou seja, um modelo no qual o caminho $\pi$ satisfaz a fórmula $\varphi$. Um caminho é formado por uma sequência de estados $s$ e suas posições são indexadas partindo de $\pi_{1}$ até $\pi_{n}$, em que $n$ determina a quantidade de posições de $\pi$. Sendo $\pi$ um dado caminho de $\mathcal{M}$, as relações de satisfação $\models$ e $\nvDash$ indicam se uma fórmula LTL é satisfeita ou não, respectivamente, por $\pi$, como exposto na Figura~\ref{fig:ltl_sem}. 
+
+\begin{figure}[ht]
+	\caption{Semântica da LTL.} \label{fig:ltl_sem}
+	\centering
+	\begin{align}
+	&\pi \models \top \label{eq:l1} \\
+	&\pi \nvDash \bot \label{eq:l2} \\
+	&\pi \models p \Longleftrightarrow p \in L(\pi_{1}) \label{eq:l3} \\
+	&\pi \models \neg \varphi \iff \pi \not \models \varphi \label{eq:l4} \\
+	&\pi \models \varphi \wedge \varphi' \iff \pi \models \varphi \mbox{ e } \pi \models \varphi' \label{eq:l5}\\
+	&\pi \models \varphi \vee \varphi' \iff \pi \models \varphi \mbox{ ou } \pi \models \varphi' \label{eq:l6}\\
+	&\pi \models \varphi \to \varphi' \iff \pi \models \varphi \mbox{ sempre que } \pi \models \varphi' \label{eq:l7}\\
+	&\pi \models X\varphi \iff \pi_2 \models \varphi \label{eq:l8}\\
+	&\pi \models G\varphi \iff \forall i \geq 1 \mid \pi_i \models \varphi \label{eq:l9}\\
+	&\pi \models F\varphi \iff \exists i \geq 1 \mid \pi_i \models \varphi \label{eq:l10}\\
+	&\pi \models \varphi U \varphi' \iff \exists i \geq 1 \mid \pi_i \models \varphi' \mbox{ e } \forall j = 1 \wedge j < i \mid \pi_j \models \varphi \label{eq:l11}
+	\end{align}
+	\fdireta{huth2004logic}
+\end{figure}
+
+Nas definições~\ref{eq:l1} e~\ref{eq:l2} da Figura~\ref{fig:ltl_sem} são indicadas as proposições verdadeiras e falsas, respectivamente. Na definição~\ref{eq:l3} é dito que a proposição $p$ só é válida se estiver no primeiro estado do caminho. Nas proposições~\ref{eq:l4} à~\ref{eq:l7} são definidos os conectivos proposicionais da lógica proposicional. Em~\ref{eq:l8}, o operador $X$ denota que a fórmula $\varphi$ é satisfeita no próximo estado, no caso, a segunda posição do caminho. As definições~\ref{eq:l9} e~\ref{eq:l10} representam os operadores $G$ e $F$ que apontam, respectivamente, que a fórmula $\varphi$ é verdadeira em todas ou em pelo menos uma posição de $\pi$. Por fim, a definição~\ref{eq:l11} representa o operador $U$, expressando que, para toda posição antecessora à $\pi_{i}$, a fórmula $\varphi$ é verdadeira, caso contrário, a proposição $\varphi'$ é verdadeira.
+
+Diversas propriedades podem ser verificadas com fórmulas LTL, tais como as de segurança, de vivacidade, e de progresso~\cite{huth2004logic, mura2016}. ~\citeonline{huth2004logic} descrevem algumas propriedades que podem ser representadas em sistemas reais, considerando um sistema especificado com as proposições $ocupado$, $requisitado$, $iniciado$, $pronto$ e $habilitado$, como nos exemplos a seguir:
+
+\begin{itemize}
+	\item O sistema não pode ter $iniciado$ e ainda não estar $pronto$ para atender requisições: 
+	\begin{equation}
+	G\neg(iniciado\wedge\neg\;pronto)
+	\end{equation} 
+	\item Em todo sistema, se é $requisitado$ algum recurso, o requisitante deve ser $respondido$:
+	\begin{equation}
+	G(requisitado \to F\;respondido)
+	\end{equation}
+	\item Um processo é $habilitado$ infinitas vezes em todo o caminho de computação: 
+	\begin{equation}
+	GF\;habilitado 
+	\end{equation}
+	\item Um elevador subindo para o segundo andar não muda sua direção quando houver passageiros que desejam ir para o quinto andar: 
+	\begin{equation}
+	G(andar2 \wedge subindo \wedge pressionadoBotao5 \to (subindo U andar5))
+	\end{equation}
+\end{itemize}
+
+\subsubsection*{\textbf{Lógica temporal ramificada}}
+
+A lógica temporal ramificada (do inglês, \sigla{CTL}{\textit{computational tree logic}}), ou lógica de computação em árvore (CTL), é capaz de representar sistemas de transições de estados em que o futuro não é determinado, ou seja, quando há uma variedade de possíveis caminhos que podem ser tomados a partir de um determinado estado. Sendo assim, a evolução do sistema ao longo do tempo pode ser representada por uma árvore que retrata todas as execuções possíveis~\cite{huth2004logic}. Na Figura~\ref{fig:ctl_ex}, à esquerda, é apresentado um modelo de estados, e à direita, a árvore de computação que representa as mudanças de estados, retratados pelo rótulo do nó e o nível de profundidade da execução.
+
+\begin{figure}[ht]
+    \caption{Exemplo de árvore de computação num sistema de transição.} \label{fig:ctl_ex}
+	\centering
+	\includegraphics[width=0.8\textwidth]{figuras/ctl_ex.png}
+	\fdireta{huth2004logic}
+\end{figure}
+
+A sintaxe de construção de fórmulas CTL estende a LTL e adiciona os operadores existencial ($E$) e universal ($A$), e consiste em:
+\begin{align}
+& \varphi ::= \top \mid \perp \mid p \mid \neg \varphi \mid \varphi \wedge \varphi \mid \varphi\vee\varphi \mid \varphi \to \varphi \mid \nonumber \\ 
+& AX\varphi \mid EX\varphi \mid AF\varphi \mid EF\varphi \mid AG\varphi \mid EG\varphi \mid A[\varphi U \varphi]\mid E[\varphi U \varphi] \label{eq:ctl}
+\end{align}
+
+Como exposto na definição~\ref{eq:ctl}, os conectivos temporais da CTL são usados em pares, sendo o primeiro um quantificador, denotado por $A$ ou $E$, enquanto que o segundo é um operador temporal, usado da mesma forma que na LTL. O quantificador $A$ expressa que, a partir de um determinado estado, a propriedade é verdadeira para todos os caminhos de computação possíveis. O operador $E$ sugere que, a partir de um determinado estado, há ao menos um caminho em que a propriedade é verdadeira~\cite{katoen1999concepts}. Alguns exemplos de fórmulas CTL são apresentados a seguir: 
+\begin{itemize}
+	\item É possível chegar a um estado em que o sistema está $iniciado$ mas não está $pronto$? 
+	\begin{equation}
+	EF(iniciado \wedge \neg pronto)
+	\end{equation}
+	\item Em qualquer caminho e em todo este caminho, se algum recurso é $requisitado$, ele eventualmente é $reconhecido$? 
+	\begin{equation}
+	AG(requisitado \to AF\;reconhecido)
+	\end{equation}
+	\item Um determinado processo está $habilitado$ infinitamente em cada caminho de computação. 
+	\begin{equation}
+	AG(AF\;habilitado)
+	\end{equation}
+\end{itemize}
+
+Assim como na LTL, as fórmulas em CTL são interpretadas sobre os caminhos a partir de estados em um sistema de transição~\cite{katoen1999concepts}. Dado o modelo de transição $\mathcal{M} = (S, \rightarrow, L)$, a relação de satisfação $\mathcal{M}, s \models \varphi$ pode ser dada indutivamente conforme é exibido na Figura~\ref{fig:ctl_sem}, em que $s \in \mathcal{M}$ e $\varphi$ é uma fórmula em CTL~\cite{mura2016}.
+
+Na CTL, os quantificadores existencial e universal podem ser aninhados para expressar propriedades mais complexas. Por exemplo, uma propriedade em que para todo caminho de computação sempre é possível retornar para o estado inicial, pode ser representada por $AG~(EF~(inicio))$. A partir desta fórmula CTL, interpreta-se que, em todo estado do sistema ($G$), para todo caminho de computação ($A$), existe a possibilidade ($E$) de eventualmente retornar ao início ($F~inicio$)~\cite{baier2008principles}.
+
+\begin{figure}[H]
+    \caption{Semântica da CTL.} \label{fig:ctl_sem}
+	\centering
+	\begin{align}
+	&\mathcal{M},s  \models  \top \\
+	&\mathcal{M},s  \not\models  \perp \\
+	&\mathcal{M},s  \models  p \iff p \in L(s) \\
+	&\mathcal{M},s  \models  \neg \varphi \iff \pi \not \models \varphi \\
+	&\mathcal{M},s  \models  \varphi \wedge \varphi' \iff \mathcal{M},s \models \varphi \mbox{ e } \mathcal{M},s \models \varphi' \\
+	&\mathcal{M},s  \models  \varphi \vee \varphi' \iff \mathcal{M},s \models \varphi \mbox{ ou } \mathcal{M},s \models \varphi' \\
+	&\mathcal{M},s  \models  \varphi \to \varphi' \iff \mathcal{M},s \not\models \varphi \mbox{ ou } \mathcal{M},s \models \varphi' \\
+	&\mathcal{M},s  \models  AX\varphi \iff \forall s_1 \mid s\to s_1 \mbox{ com } \mathcal{M}, s_1 \models \varphi \\
+	&\mathcal{M},s  \models  EX\varphi \iff \exists s_1 \mid s\to s_1 \mbox{ com } \mathcal{M}, s_1 \models \varphi \\
+	&\mathcal{M},s  \models  AG\varphi \iff \forall \pi = s_1\to s_2\to s_3\to \dots \mid s_1 = s \mbox{ e } \forall s_i \in \pi \mbox{ com } \mathcal{M}, s_i \models \varphi \\
+	&\mathcal{M},s  \models  EG\varphi \iff \exists \pi = s_1\to s_2\to s_3\to \dots \mid s_1 = s \mbox{ e } \forall s_i \in \pi \mbox{ com } \mathcal{M}, s_i \models \varphi \\
+	&\mathcal{M},s  \models  AF\varphi \iff \forall \pi = s_1\to s_2\to s_3\to \dots \mid s_1 = s \mbox{ e } \exists s_i \in \pi \mid \mathcal{M}, s_i \models \varphi \\
+	&\mathcal{M},s  \models  EF\varphi \iff \exists \pi = s_1\to s_2\to s_3\to \dots \mid s_1 = s \mbox{ e } \exists s_i \in \pi \mid \mathcal{M}, s_i \models \varphi \\
+	&\mathcal{M},s  \models  A[\varphi U \varphi'] \iff \forall \pi = s_1\to s_2\to s_3\to \dots \mid s_1 = s \exists s_i \in \pi \mid \\
+	&\mathcal{M}, s_i \models \varphi' \mbox{ e } \forall j < i \mbox{ com }  \mathcal{M}, s_j \models \varphi \\
+	&\mathcal{M},s  \models  E[\varphi U \varphi'] \iff \exists \pi = s_1\to s_2\to s_3\to \dots \mid s_1 = s \exists s_i \in \pi \mid \\
+	&\mathcal{M}, s_i \models \varphi' \mbox{ e } \forall j < i \mbox{ com }  \mathcal{M}, s_j \models \varphi
+	\end{align}
+	\fdireta{mura2016}	
+\end{figure}
 
 %#falar do correct-by-construction, que é proativo
 

@@ -1,77 +1,33 @@
 \begin{table}[!ht]
 \centering\fontsize{8pt}{8pt}\selectfont
+\addtolength{\tabcolsep}{-4pt}
 \caption{Abrangência e automação das abordagens de verificação de CIs}
 \label{tab:rq5-limitacoes}
-\begin{tabular}{l|ll|lll}
-\multirow{\textbf{Abordagem}} &
-  \multicolumn{2}{c|}{\textbf{Abrangência}} &
-  \multicolumn{3}{c}{\textbf{Automação}} \\
- &
-  \textbf{Para todos os CIs} &
-  \textbf{Para um subconjunto} &
-  \textbf{Automatizada} &
-  \textbf{Semi-Automatizada} &
-  \textbf{Não automatizada} \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Análise \\ estática\end{tabular}} &
-  \begin{tabular}[c]{@{}l@{}}\#02, \#21, \#27, \#29, \#31\\ \#34, \#55, \#62, \#63, \#71\\ \#75, \#76, \#77, \#79, \#80\\ \#81, \#85, \#86, \#88, \#91\\ \#98\end{tabular} &
-  \#06, \#07, \#66, \#69, \#73 &
-  \begin{tabular}[c]{@{}l@{}}\#02, \#21, \#27, \#29, \#31\\ \#34, \#55, \#62, \#63, \#66\\ \#71, \#73, \#75, \#76, \#77\\ \#79, \#80, \#81, \#85, \#86\\ \#88, \#91, \#98\end{tabular} &
-  \#07, \#69 &
-  \#06 \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Análise \\ dinâmica\end{tabular}} &
-  \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular} &
-   &
-  \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular} &
-   &
-   \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Análise \\ simbólica\end{tabular}} &
-  \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular} &
-   &
-  \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular} &
-   &
-   \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Execução \\ simbólica\end{tabular}} &
-  \begin{tabular}[c]{@{}l@{}}\#02, \#13, \#25, \#36, \#37\\ \#38, \#50, \#56, \#57, \#62\\ \#65, \#68, \#74, \#79, \#82\\ \#89, \#97, \#104\end{tabular} &
-  \#7 &
-  \begin{tabular}[c]{@{}l@{}}\#02, \#13, \#25, \#36, \#37\\ \#50, \#56, \#57, \#62, \#65\\ \#68, \#74, \#79, \#82, \#89\end{tabular} &
-  \#7, \#38, \#97, \#104 &
-   \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Demonstração \\ de teoremas\end{tabular}} &
-  \#38 &
-  \#03, \#43 &
-   &
-  \#03, \#38, \#43 &
-   \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Model \\ checking\end{tabular}} &
-  \begin{tabular}[c]{@{}l@{}}\#10, \#26, \#32, \#48, \#101\\ \#103\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}\#04, \#11, \#17, \#22, \#28\\ \#40, \#41, \#42, \#44, \#45\\ \#46, \#47, \#58, \#59, \#60\\ \#78, \#87\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}\#10, \#26, \#32, \#47, \#48\\ \#87\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}\#04, \#11, \#22, \#28, \#41\\ \#44, \#45, \#46, \#58, \#59\\ \#78, \#101, \#103\end{tabular} &
-  \#17, \#40, \#42, \#60 \\ \hline
-\textbf{\begin{tabular}[c]{@{}l@{}}Verificação \\ dedutiva\end{tabular}} &
-  \#100, \#102 &
-  \begin{tabular}[c]{@{}l@{}}\#05, \#09, \#15, \#23, \#24\\ \#99\end{tabular} &
-  \#15, \#23, \#102 &
-  \#05, \#09, \#24, \#99, \#100 &
-   \\ \hline
-\textbf{Fuzzing} &
-  \begin{tabular}[c]{@{}l@{}}\#18, \#33, \#35, \#37, \#51\\ \#52, \#64, \#70, \#90\end{tabular} &
-   &
-  \begin{tabular}[c]{@{}l@{}}\#18, \#33, \#35, \#37, \#51\\ \#52, \#64, \#70, \#90\end{tabular} &
-   &
-   \\ \hline
-\textbf{IA} &
-  \begin{tabular}[c]{@{}l@{}}\#08, \#14, \#20, \#54, \#84\\ \#90, \#16, \#96\end{tabular} &
-   &
-  \#20, \#84, \#90, \#16, \#96 &
-   &
-  \#08, \#14, \#54 \\ \hline
-\textbf{Outras} &
-  \#12, \#83, \#95 &
-  \#67 &
-  \#12, \#83,   \#95 &
-   &
-  \#67 \\ \hline
+\begin{tabular}{l|l|l|l|l|l}
+\textbf{Abordagem}                                                                    & \multicolumn{2}{c|}{\textbf{Abrangência}}                                                                                                                                                                                                                                                                                  & \multicolumn{3}{c}{\textbf{Automação}}                                                                                                                                                                                                                                                                                                       \\ 
+\cline{2-6}
+                                                                                      & \textbf{Para todos os CIs}                                                                                                                                               & \textbf{Para um subconjunto}                                                                                                                    & \textbf{Automatizada}                                                                                                                                                                & \textbf{Semi-Automatizada}                                                                                               & \textbf{Não automatizada}  \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Análise }\\\textbf{ estática}\end{tabular}         & \begin{tabular}[c]{@{}l@{}}\#02, \#21, \#27, \#29, \#31\\ \#34, \#55, \#62, \#63, \#71\\ \#75, \#76, \#77, \#79, \#80\\ \#81, \#85, \#86, \#88, \#91\\ \#98\end{tabular} & \#06, \#07, \#66, \#69, \#73                                                                                                                    & \begin{tabular}[c]{@{}l@{}}\#02, \#21, \#27, \#29, \#31\\ \#34, \#55, \#62, \#63, \#66\\ \#71, \#73, \#75, \#76, \#77\\ \#79, \#80, \#81, \#85, \#86\\ \#88, \#91, \#98\end{tabular} & \#07, \#69                                                                                                               & \#06                       \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Análise }\\\textbf{ dinâmica}\end{tabular}         & \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular}                                                                                              &                                                                                                                                                 & \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular}                                                                                                          &                                                                                                                          &                            \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Análise }\\\textbf{ simbólica}\end{tabular}        & \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular}                                                                                              &                                                                                                                                                 & \begin{tabular}[c]{@{}l@{}}\#39, \#72, \#76, \#92, \#93\\ \#94\end{tabular}                                                                                                          &                                                                                                                          &                            \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Execução }\\\textbf{ simbólica}\end{tabular}       & \begin{tabular}[c]{@{}l@{}}\#02, \#13, \#25, \#36, \#37\\ \#38, \#50, \#56, \#57, \#62\\ \#65, \#68, \#74, \#79, \#82\\ \#89, \#97, \#104\end{tabular}                   & \#07                                                                                                                                            & \begin{tabular}[c]{@{}l@{}}\#02, \#13, \#25, \#36, \#37\\ \#50, \#56, \#57, \#62, \#65\\ \#68, \#74, \#79, \#82, \#89\end{tabular}                                                   & \#07, \#38, \#97, \#104                                                                                                  &                            \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Demonstração }\\\textbf{ de teoremas}\end{tabular} & \#38                                                                                                                                                                     & \#03, \#43                                                                                                                                      &                                                                                                                                                                                      & \#03, \#38, \#43                                                                                                         &                            \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Model }\\\textbf{ checking}\end{tabular}           & \begin{tabular}[c]{@{}l@{}}\#10, \#26, \#32, \#48, \#101\\ \#103\end{tabular}                                                                                            & \begin{tabular}[c]{@{}l@{}}\#04, \#11, \#17, \#22, \#28\\ \#40, \#41, \#42, \#44, \#45\\ \#46, \#58, \#59, \#60, \#78 \\ \#87\end{tabular} & \begin{tabular}[c]{@{}l@{}}\#10, \#26, \#32, \#48, \#87\end{tabular}                                                                                                          & \begin{tabular}[c]{@{}l@{}}\#04, \#11, \#22, \#28, \#41\\ \#44, \#45, \#46, \#58, \#59\\ \#78, \#101, \#103\end{tabular} & \#17, \#40, \#42, \#60     \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textbf{Verificação }\\\textbf{ dedutiva}\end{tabular}     & \#100, \#102                                                                                                                                                             & \begin{tabular}[c]{@{}l@{}}\#05, \#09, \#15, \#23, \#24\\ \#47, \#99\end{tabular}                                                                     & \#15, \#23, \#47, \#102                                                                                                                                                                    & \#05, \#09, \#24, \#99, \#100                                                                                            &                            \\ 
+\hline
+\textbf{Fuzzing}                                                                      & \begin{tabular}[c]{@{}l@{}}\#18, \#33, \#35, \#37, \#51\\ \#52, \#64, \#70, \#90\end{tabular}                                                                            &                                                                                                                                                 & \begin{tabular}[c]{@{}l@{}}\#18, \#33, \#35, \#37, \#51\\ \#52, \#64, \#70, \#90\end{tabular}                                                                                        &                                                                                                                          &                            \\ 
+\hline
+\textbf{IA}                                                                           & \begin{tabular}[c]{@{}l@{}}\#08, \#14, \#20, \#54, \#84\\ \#90, \#16, \#96\end{tabular}                                                                                  &                                                                                                                                                 & \#20, \#84, \#90, \#16, \#96                                                                                                                                                         &                                                                                                                          & \#08, \#14, \#54           \\ 
+\hline
+\textbf{Outras}                                                                       & \#12, \#83, \#95                                                                                                                                                         & \#67                                                                                                                                            & \#12, \#83,   \#95                                                                                                                                                                   &                                                                                                                          & \#67                       \\
+\hline
 \end{tabular}
 \fdadospesquisa
 \end{table}
