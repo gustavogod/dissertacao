@@ -1,0 +1,121 @@
+\documentclass[12pt,xcolor={usenames,dvipsnames}]{beamer}
+\usetheme{Frankfurt}
+%\usecolortheme{whale} % alterar esquema de cores
+\useinnertheme{rectangles}
+
+%%%%Código inserido para ter a barra com o nome da subseção abaixo da barra de navegação
+\setbeamertemplate{headline}{
+    % insere a barra de navegação
+    \begin{beamercolorbox}[ht=2.125ex,dp=3.150ex]{section in head/foot}
+        \insertnavigation{\paperwidth}
+    \end{beamercolorbox}
+    % insere a barra com o nome da subseção
+    \setbeamercolor{bgcolor}{fg=white,bg=blue!20!black} 
+    \begin{beamercolorbox}[ht=2.125ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{bgcolor}
+        \usebeamerfont{bgcolor}
+        \insertsubsectionhead
+    \end{beamercolorbox}%
+}
+
+%%%%Código inserido para ter a linha de rodapé junto do tema Frankfurt
+\defbeamertemplate*{footline}{infolines theme}
+{
+    \leavevmode%
+    \hbox{%
+    \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+        \usebeamerfont{author in head/foot}
+
+%se houver mais de 1 autor, o ideal é remover o nome dos autores da barra inferior
+%\insertshortauthor~~
+
+        \insertshortinstitute
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+        \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}
+}%
+%\vskip0pt%
+}
+%%%%%%%%%%%%%%%%%% 
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{tipa}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{bbold}
+\usepackage{latexsym}
+\usepackage{ae}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{textcomp}
+\usepackage{cmll}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{upgreek}
+\usepackage[portuguese]{algorithm2e}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,automata,positioning}
+\usepackage{stmaryrd}
+\usepackage{outlines}
+\usepackage{mathrsfs} %fonte da sintaxe 
+\input{config}
+
+\usepackage[style=verbose,autocite=footnote]{biblatex}
+\addbibresource{references.bib}
+
+
+\title[\miniscule{Exame de Qualificação}]{Verificação formal para detecção de vulnerabilidades em contratos inteligentes}
+
+\subtitle{}
+
+\author{Gustavo Oliveira Dias\inst{1} \\ Prof. Dr. Adenilso da Silva Simão\inst{1}}
+
+\institute[Universidade de São Paulo - USP]
+{
+    \inst{1}
+Instituto de Ciências Matemáticas e de Computação - ICMC\\
+}
+
+\date[05 de julho de 2021]{05 de julho de 2021}
+
+\subject{}
+
+\AtBeginSubsection[]
+{
+    \addtocounter{framenumber}{-1}
+    \begin{frame}{Sumário}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+  % possibilidade de adicionar opções [pausesections]
+\end{frame}
+
+%%%% Seções
+
+\input{seções/blockchain}
+\input{seções/contratos-inteligentes}
+\input{seções/verificacao}
+\input{seções/metodologia}
+\input{seções/proposta}
+ 
+\frame{\titlepage}
+ 
+\end{document}

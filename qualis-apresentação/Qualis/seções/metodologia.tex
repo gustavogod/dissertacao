@@ -1,0 +1,163 @@
+\section{Metodologia}
+\subsection{Técnicas de pesquisa}
+
+\begin{frame}{Metodologia e técnicas de pesquisa}
+    \begin{block}{Mapeamento Sistemático (MS)}
+    Identificar e classificar o conteúdo relacionado à \textbf{verificação para correção} ou \textbf{detecção de vulnerabilidades} para aprimoramento da segurança dos CIs.
+    \end{block}
+    Com base no MS:
+    \begin{itemize}
+        \item Seleção do método de verificação e detecção de vulnerabilidades;
+        \item Seleção das vulnerabilidades abordadas;
+        \item Definição da estratégia para validação da proposta. 
+    \end{itemize}
+\end{frame}
+
+\subsection{Mapeamento Sistemático}
+\begin{frame}{Mapeamento Sistemático}
+    Três fases:
+    \begin{itemize}
+        \item Planejamento;
+        \begin{itemize}
+            \item Objetivo e protocolo do MS.
+        \end{itemize}
+        \item Condução;
+        \begin{itemize}
+            \item Identificação dos estudos primários;
+            \item Extração e síntese dos dados.
+        \end{itemize}
+        \item Publicação dos resultados.
+        \begin{itemize}
+            \item Questões de pesquisa são respondidas;
+            \item Relato dos resultados.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Protocolo do MS}
+\textbf{Questões de pesquisa}:
+    \begin{itemize}
+        \item \textbf{QP 1.} Quais abordagens têm sido propostas?
+        \item \textbf{QP 2.} Quando e onde os estudos têm sido publicados?
+        \item \textbf{QP 3.} Quais problemas ou vulnerabilidades relacionados aos CIs têm sido abordados?
+        \item \textbf{QP 4.} Quais estratégias de validação foram utilizadas?
+        \item \textbf{QP 5.} Quais são as limitações presentes nas abordagens?
+    \end{itemize}    
+\end{frame}
+
+\begin{frame}{Protocolo do MS}
+\textbf{String de busca}:
+    \begin{center}
+    (\textit{``smart contract'' OR ``ethereum bytecode''}) \textit{AND} (\textit{verification OR validation OR monitor* OR analysis OR formalization OR ``formal methods'' OR ``security vulnerabilities'' OR ``security bugs'' OR ``vulnerability detection'' OR ``bug detection'' OR optimiz*})
+    \end{center}
+\textbf{Motores de busca e bases bibliográficas}:
+    \begin{itemize}
+        \item \textit{Engineering Village};
+        \item \textit{Scopus};
+        \item \textit{Web of Science};
+        \item \textit{IEEE Xplore};
+        \item \textit{ACM Digital Library}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Planejamento e condução}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.3]{figuras/metodologia/ms_fluxo.png}
+    \end{figure}
+    \begin{itemize}
+        \item Total de estudos selecionados: 2091
+        \item Total de estudos aceitos: \textbf{104}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Resultados - QP1}
+    \begin{itemize}
+        \item \textbf{QP1.} Quais abordagens têm sido propostas?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.4]{figuras/metodologia/rq1-abordagens.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Resultados - QP2}
+    \begin{itemize}
+        \item \textbf{QP2.} Quando e onde os estudos têm sido publicados?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.5]{figuras/metodologia/rq2-distribuicao-estudos.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Resultados - QP2}
+    \begin{itemize}
+        \item \textbf{QP2.} Quando e onde os estudos têm sido publicados?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.35]{figuras/metodologia/rq2-distribuicao-abordagens.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Resultados - QP3}
+    \begin{itemize}
+        \item \textbf{QP3.} Quais problemas ou vulnerabilidades relacionados aos CIs têm sido abordados?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.55]{figuras/metodologia/rq3-vulnerabilidades.png}
+    \end{figure}    
+\end{frame}
+
+\begin{frame}{Resultados - QP3}
+    \begin{itemize}
+        \item \textbf{QP3.} Quais problemas ou vulnerabilidades relacionados aos CIs têm sido abordados?
+    \end{itemize}
+    \input{tabelas/rq3-vulnerabilidades}
+\end{frame}
+
+\begin{frame}{Resultados - QP4}
+    \begin{itemize}
+        \item \textbf{QP4.} Quais estratégias de validação foram utilizadas?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.5]{figuras/metodologia/rq4-validacao-propostas.png}
+    \end{figure}    
+\end{frame}
+
+\begin{frame}{Resultados - QP5}
+    \begin{itemize}
+        \item \textbf{QP5.} Quais são as limitações presentes nas abordagens?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.4]{figuras/metodologia/rq5-abrangencia.png}
+    \end{figure}     
+\end{frame}
+
+\begin{frame}{Resultados - QP5}
+    \begin{itemize}
+        \item \textbf{QP5.} Quais são as limitações presentes nas abordagens?
+    \end{itemize}
+    \begin{figure}[!htb]
+     \centering
+     \includegraphics[scale=0.4]{figuras/metodologia/rq5-automacao.png}
+    \end{figure}     
+\end{frame}
+
+\begin{frame}{Discussão}
+    \begin{itemize}
+        \item \textit{Model checking} está entre as abordagens mais utilizadas nos últimos anos;
+        \item Há poucos estudos com validação experimental;
+        \item Reentrância foi a vulnerabilidade mais abordada;
+        \item A violação de propriedades 
+    \end{itemize}
+\end{frame}
+
+%abrangência
+%nível de automação
+%conhecimento prévio
+%acurácia - FP ou FN
