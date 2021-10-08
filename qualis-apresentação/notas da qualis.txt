@@ -1,0 +1,36 @@
+- colocar na introdução já o pq de achar q model checking é promissor
+tratar como uma hipótese, pq o model checking vai resolver meu problema??
+
+- tratar com mais profundidade a questão da explosão de estados?
+- será q esse problema não vai ocorrer??
+- será q esse problema não vai continuar ocorrendo?
+- tem que tratar isso já na introdução
+
+- Quais os grandes exemplos de uso do model-checking q são sucesso
+trazer exemplos de sucesso em outras áreas para convencer sobre a relevância e impacto
+- tem que deixar mais claro onde q ta a contribuição de usar o model checking e de aplicar um experimento.
+
+- seria importante destacar da onde os CIs da amostra vão ser tirados, isso aumenta a robustez da validação
+
+- deixar mais claro exatamente onde estão os desafios
+- deixar claro q funcionalidades e defeitos de software são coisas diferentes, e por que isso merece atenção
+
+- padronizar oq é técnica e oq é método e usar sempre o mesmo termo para se referir a mesma coisa
+
+- framework??? talvez usar ferramenta seria mais adequade do que "framework"
+- tem q definir o pq de estar usando esse termo. ex: glossário ou nota de rodapé
+
+- faltou dar um panorama do pq não usou outra plataforma sem ser ethereum???
+	tem que falar disso
+	e se alguém perguntar, "esse problema não acontece se usar outra plataforma blockchain?:"
+	tem que definir o escopo e fazer essa justificativa
+
+- o encadeamento dos argumentos utilizados na parte do "quase-completa" ficou esquisito, poderia nem ter colocado
+
+- os objetivos deveriam se referir a resultados parciais e serem avaliados externamente
+- quais dados vão ser avaliados?
+- quais resultados parciais podem ser publicados???
+
+-fazer um cronograma da onde quer publicar os resultados parciais e pq essa conferência/periódico
+
+- deixar claro no texto q está atuando no escopo das vulnerabilidade da camada de APLICAÇÃO e não outras

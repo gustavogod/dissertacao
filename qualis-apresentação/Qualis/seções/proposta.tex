@@ -2,7 +2,7 @@
 \subsection{Objetivos}
 \begin{frame}{Objetivo}
     \begin{block}{Objetivo geral}
-    Propor uma estratégia para verificação formal para aprimoramento de segurança aplicada na fase de pré-implementação de CIs escritos em \textbf{Solidity} para detecção das vulnerabilidades de \textbf{reentrância}, \textbf{\textit{delegatecall injection}} e \textbf{contrato suicida}, por meio da técnica de \textbf{\textit{model checking}}.
+    Propor uma estratégia para verificação formal para aprimoramento de segurança aplicada na fase de pré-implantação de CIs escritos em \textbf{Solidity} para detecção das vulnerabilidades de \textbf{reentrância}, \textbf{\textit{delegatecall injection}} e \textbf{contrato suicida}, por meio da técnica de \textbf{\textit{model checking}}.
     \end{block}
     Objetivos específicos:
     \begin{itemize}
@@ -16,7 +16,7 @@
     \begin{block}{}
     Framework para verificação formal de CIs escritos em Solidity na fase de pré-implantação.
     \end{block}
-    Tarefas realizadas por meio do framework:
+    \textbf{Tarefas realizadas por meio do framework:}
     \begin{itemize}
         \item Inclusão do código fonte em Solidity;
         \begin{itemize}
@@ -38,7 +38,7 @@
     \begin{block}{}
     Framework para verificação formal de CIs escritos em Solidity na fase de pré-implantação.
     \end{block}
-    Tarefas realizadas por meio do framework:
+    \textbf{Tarefas realizadas por meio do framework:}
     \begin{itemize}
         \item Conversão para lógica temporal;
         \item Verificação;
@@ -49,30 +49,30 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Proposta}
+\begin{frame}{Framework proposto}
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[scale=0.4]{figuras/proposta/framework.png}
+	\end{figure}    
+\end{frame}
+
+\begin{frame}{Proposta - Validação}
     \begin{block}{}
     Framework para verificação formal de CIs escritos em Solidity na fase de pré-implantação.
     \end{block}
-    Validação: 
+    \textbf{Experimento:} 
     \begin{itemize}
         \item Experimento sobre um conjunto de CIs com vulnerabilidades já conhecidas;
         \item Avaliar a eficácia e acurácia da verificação;
-        \item Eficiência;
+        \item Eficiência:
         \begin{itemize}
             \item Consumo de memória, processamento e tempo de execução.
         \end{itemize}
     \end{itemize}
-    Estudo de caso:
+    \textbf{Estudo de caso:}
     \begin{itemize}
         \item Aplicado para tratar de propriedades funcionais relativas aos requisitos do CI.
     \end{itemize}    
-\end{frame}
-
-\begin{frame}{Framework proposto}
-    \begin{figure}[!htb]
-     \centering
-     \includegraphics[scale=0.4]{figuras/proposta/framework.png}
-    \end{figure}    
 \end{frame}
 
 \subsection{Trabalhos relacionados}
@@ -93,20 +93,21 @@
 \begin{frame}{O framework de Nelaturu \textit{et al.} (2020)}
 	\begin{itemize}
 		\item Extensão do VeriSolid;
-		\item Permite a relação entre múltiplos contratos;
+		\item Solidity $\rightarrow$ MEF;
+		\item Permite a relação entre múltiplos contratos:
 		\begin{itemize}
 			\item Diagrama de implementação.
 		\end{itemize} 
-		\item Implantação do automática dos CIs gerados;
-		\item Vulnerabilidades de reentrância e exceções não tratadas;
+		\item Implantação automática dos CIs gerados;
+		\item Vulnerabilidades de reentrância e exceções não tratadas:
 		\begin{itemize}
 			\item Prevenidas na construção de MEF.
 		\end{itemize}
-		\item Vulnerabilidades de endereço curto, contrato suicida e bloqueio de Ether;
+		%\item Vulnerabilidades de endereço curto, contrato suicida e bloqueio de Ether;
 		\begin{itemize}
 			\item Verificadas na modelagem ou implantação.
 		\end{itemize}
-		\item Propriedades descritas por meio de \textit{templates} em linguagem natural;
+		\item Propriedades descritas por meio de modelos em linguagem natural;
 		\item Reentrância:
 		\begin{itemize}
 			\item Não permite a execução de funções \textit{callback};
@@ -135,8 +136,5 @@
 
 \subsection{Plano de trabalho}
 \begin{frame}{Plano de trabalho}
-    \begin{figure}[ht]
-    \centering
-    \includegraphics[width=10cm]{figuras/proposta/plano_de_trabalho.png}
-    \end{figure}
+    \input{tabelas/cronograma.tex}
 \end{frame}

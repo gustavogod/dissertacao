@@ -1,0 +1,15 @@
+[check]Slide de objetivo antes da metodologia -> colocar como primeiro slide da metodologia
+
+tentar citar o objetivo em algum momento mais no começo da apresentação
+
+Deixar explícito que o MS realmente já foi feito, pois ta parecendo que é uma proposta
+	deixar claro se foi o MS que motivou os objetivos 
+	ou os objetivos motivaram o MS
+
+Slide 36 colocar o diagrama do mapeamento e retirar os tópicos
+
+Detalhar um pouco o model checking?? e análise de código???
+
+->>>>>>>>>mudar o link naquele slide que cita o stateofthedapps -> tem q ser o link da coinmarketcap
+
+Pesquisar latex diff   para gerar 

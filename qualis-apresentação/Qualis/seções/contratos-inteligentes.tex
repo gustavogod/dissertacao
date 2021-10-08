@@ -43,17 +43,17 @@
     \begin{block}{}
     Esta propriedade agrega \textbf{integridade} à tecnologia blockchain, mas também ressalta a importância da implementação de contratos livres de erros e de acordo com boas práticas.
     \end{block}
+    \begin{block}{}
+	Aplicações desenvolvidas por meio de CIs costumam envolver transferências e gerenciamento de grandes quantias em Ether.
+	\end{block}
     \begin{alertblock}{}
     \textbf{Vulnerabilidades} deixadas nos códigos dos CIs podem torná-los alvos de \textbf{ataques}.
     \end{alertblock}
 \end{frame}
 
 \begin{frame}{Contratos inteligentes - Vulnerabilidades e ataques}
-    \begin{block}{}
-    Aplicações desenvolvidas por meio de CIs costumam envolver transferências e gerenciamento de grandes quantidades de bens digitais.
-    \end{block}
     \begin{itemize}
-        \item Primeiro ataque: \textit{The DAO Attack} (2016);]
+        \item Primeiro ataque: \textit{The DAO Attack} (2016);
         \item Vulnerabilidade explorada: \textbf{Reentrância};
         \item Um usuário malicioso transferiu \textbf{3,6 milhões} em Ether para sua conta;
         \item Equivalente a \textbf{50 milhões} de dólares.
@@ -70,9 +70,9 @@
     \begin{block}{}
     Solidity possui elementos similares ao de outras linguagens, mas que não são implementados da mesma forma.
     \end{block}
-    \begin{exampleblock}{}
+    \begin{alertblock}{}
     Há registro de uma série de vulnerabilidades que resultaram na exploração de CIs e enormes perdas financeiras.
-    \end{exampleblock}
+    \end{alertblock}
 \end{frame}
 
 \begin{frame}{Contratos inteligentes - Vulnerabilidades e ataques}
@@ -108,7 +108,7 @@
 
 \begin{frame}{Exploração da reentrância}
     \begin{itemize}
-        \item 2º Passo: Doação para o contrato utilizando sua CPE.
+        \item 2º Passo: Doação para o contrato utilizando sua conta.
     \end{itemize}
     \begin{figure}[!htb]
      \centering
@@ -161,31 +161,32 @@
 
 \begin{frame}{Vulnerabilidade - \textit{Delegatecall injection}}
     \begin{itemize}
-        \item Explorado no ataque contra a \textit{Parity Multsignature Wallet};
+        \item Explorada no ataque contra a \textit{Parity Multsignature Wallet};
         \item Em 2017, 31 milhões de dólares foram subtraídos em um ataque;
-        \item \texttt{delegatecall}: Usado para inserir o \textit{bytecode} de um contrato no \textit{bytecode de outro contrato};
-        \item O contrato que é chamado pode alterar as variáveis de estado do contrato que o invocou.
+        \item \texttt{delegatecall}: Usado para inserir o \textit{bytecode} de um contrato no \textit{bytecode} de outro contrato;
+        \item O contrato que é chamado pode alterar as variáveis de estado do contrato que o invocou;
+        \item O invasor atribuiu para si a posse do contrato e realizou a transferência para sua conta.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Exploração da \textit{delegatecall injection}}
-    \begin{figure}[!htb]
-     \centering
-     \includegraphics[scale=0.5]{figuras/contratos-inteligentes/delegatecall-passo1.png}
-    \end{figure}    
-\end{frame}
+%\begin{frame}{Exploração da \textit{delegatecall injection}}
+%    \begin{figure}[!htb]
+%     \centering
+%     \includegraphics[scale=0.5]{figuras/contratos-inteligentes/delegatecall-passo1.png}
+%    \end{figure}    
+%\end{frame}
 
-\begin{frame}{Exploração da \textit{delegatecall injection}}
-    \begin{itemize}
-        \item Envio de uma transação com o campo \texttt{msg.data} contendo \texttt{initWallet} como a função a ser chamada;
-        \item Os endereços de posse do contrato (\texttt{\_owners}) foram substituídos pelo endereço do atacante;
-        \item Foi realizada a transferência de 31 milhões de dólares em Ether.
-        \item Como evitar: 
-        \begin{itemize}
-            \item Declarar contrato a ser compartilhado (\texttt{WalletLibrary}) como uma biblioteca (\texttt{library}).
-        \end{itemize}
-    \end{itemize}
-\end{frame}
+%\begin{frame}{Exploração da \textit{delegatecall injection}}
+%    \begin{itemize}
+%        \item Envio de uma transação com o campo \texttt{msg.data} contendo \texttt{initWallet} como a função a ser chamada;
+%        \item Os endereços de posse do contrato (\texttt{\_owners}) foram substituídos pelo endereço do atacante;
+%        \item Foi realizada a transferência de 31 milhões de dólares em Ether.
+%        \item Como evitar: 
+%        \begin{itemize}
+%            \item Declarar contrato a ser compartilhado (\texttt{WalletLibrary}) como uma biblioteca (\texttt{library}).
+%        \end{itemize}
+%    \end{itemize}
+%\end{frame}
 
 \begin{frame}{Vulnerabilidade - Contrato suicida}
     \begin{itemize}
@@ -195,22 +196,22 @@
         \begin{block}{}
         A vulnerabilidade \textbf{contrato suicida}, acontece quando uma \textbf{autenticação inadequada} permite que algum invasor tome posse do contrato e execute a função para matar o contrato.
         \end{block}
-        \item Foi explorada em um segundo ataque contra \textit{Parity Wallet};
+        \item Foi explorada em um segundo ataque contra a \textit{Parity Wallet};
         \item \textbf{280 milhões} de dólares em Ether foram permanentemente \textbf{bloqueados}.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Exploração da vulnerabilidade contrato suicida}
-    \begin{itemize}
-        \item Como resposta ao primeiro ataque, foi adicionado o modificador \texttt{only\_uninitialized};
-        \item Porém, o contrato \texttt{WalletLibrary} foi deixado como não inicializado;
-        \item O invasor passou pelo modificador, se declarou dono do contrato, e invicou o método suicide.
-    \end{itemize}
-    \begin{figure}[!htb]
-     \centering
-     \includegraphics[scale=0.4]{figuras/contratos-inteligentes/parity-corrigido.png}
-    \end{figure}    
-\end{frame}
+%\begin{frame}{Exploração da vulnerabilidade contrato suicida}
+%    \begin{itemize}
+%        \item Como resposta ao primeiro ataque, foi adicionado o modificador \texttt{only\_uninitialized};
+%        \item Porém, o contrato \texttt{WalletLibrary} foi deixado como não inicializado;
+%        \item O invasor passou pelo modificador, se declarou dono do contrato, e invicou o método suicide.
+%    \end{itemize}
+%    \begin{figure}[!htb]
+%     \centering
+%     \includegraphics[scale=0.4]{figuras/contratos-inteligentes/parity-corrigido.png}
+%    \end{figure}    
+%\end{frame}
 
 \begin{frame}{Ethereum - Vulnerabilidades}
     \begin{block}{}
@@ -219,4 +220,8 @@
     \begin{block}{}
     Desde o \textit{The DAO Attack}, muitos esforços foram realizados para desenvolvimento de métodos, ferramentas e frameworks para \textbf{verificação de CIs} e \textbf{detecção de vulnerabilidades}.
     \end{block}
+	\begin{exampleblock}{Questão de pesquisa}
+	Como detectar as vulnerabilidades de \textbf{reentrância}, \textbf{\textit{delegatecall injection}} e \textbf{contrato suicida}, em CIs escritos na linguagem \textbf{Solidity} na fase de \textbf{pré-implantação}?	
+	\end{exampleblock}
 \end{frame}
+
